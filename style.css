@@ -9,7 +9,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Inter', sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
 
-/* HERO BACKGROUND */
+/* HERO SQUAD IMAGE */
 .hero {
     height: 80vh;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
@@ -17,48 +17,47 @@ body { font-family: 'Inter', sans-serif; background: var(--bg); color: white; ov
     background-size: cover; background-position: center 20%;
     display: flex; align-items: center; justify-content: center; text-align: center;
 }
-.hero h1 { font-size: clamp(2rem, 10vw, 5rem); font-weight: 900; }
+.hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; }
 .tagline { color: var(--gold); letter-spacing: 5px; font-weight: 800; }
 
-/* THE TIMER - FORCED HORIZONTAL GRID */
-.timer-section { padding: 0 8%; margin-top: -80px; }
+/* HORIZONTAL TIMER */
+.timer-section { padding: 0 5%; margin-top: -80px; }
 .timer-card {
     background: linear-gradient(135deg, var(--blue), var(--red));
     padding: 30px; border-radius: 20px; text-align: center;
     box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-    max-width: 800px; margin-left: auto; margin-right: auto;
+    max-width: 900px; margin: 0 auto;
 }
 
-.countdown-grid {
+/* THE FORCE HORIZONTAL FIX */
+.countdown-horizontal-container {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important; /* HARD-CODED 4 COLUMNS */
+    grid-template-columns: repeat(4, 1fr) !important; /* FORCES 4 COLUMNS SIDE-BY-SIDE */
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto 0 auto;
     gap: 10px;
-    margin-top: 20px;
-    align-items: center;
 }
 
-.time-box span, .time-unit span { 
-    font-size: clamp(1.5rem, 8vw, 4rem); 
+.time-block span { 
+    font-size: clamp(2rem, 10vw, 4.5rem); 
     font-weight: 900; 
     color: var(--gold) !important; /* FORCED YELLOW */
     display: block;
     line-height: 1;
 }
 
-.time-box p, .time-unit p { font-size: 0.7rem; text-transform: uppercase; opacity: 0.7; margin-top: 5px; }
+.time-block p { font-size: 0.7rem; text-transform: uppercase; opacity: 0.8; margin-top: 5px; }
 
-/* TROPHY ROW */
-.trophy-row { display: flex; justify-content: center; gap: 40px; margin: 40px 0; }
-.trophy-item { text-align: center; }
-.trophy-item img { width: 80px; filter: drop-shadow(0 0 10px var(--gold)); margin-bottom: 10px; }
-
-/* TABLE */
-.container { padding: 80px 8%; }
-.section-title { font-size: 2rem; margin-bottom: 30px; border-left: 5px solid var(--gold); padding-left: 15px; }
-.trophyless { color: #ff4d4d; font-style: italic; }
+/* TROPHY & TABLE */
+.container { padding: 80px 5%; }
+.section-title { font-size: 2.2rem; margin-bottom: 30px; border-left: 6px solid var(--gold); padding-left: 15px; }
+.trophy-display-row { display: flex; justify-content: center; gap: 40px; margin: 40px 0; }
+.trophy-box img { width: 90px; filter: drop-shadow(0 0 10px var(--gold)); margin-bottom: 10px; }
+.trophyless { color: #ff4d4d; font-style: italic; font-weight: 700; }
 .table-wrapper { background: var(--navy); border-radius: 20px; overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
 th { background: rgba(0,0,0,0.3); padding: 15px; text-align: left; color: var(--gold); }
 td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-footer { padding: 40px; text-align: center; opacity: 0.4; font-size: 0.8rem; }
+footer { padding: 60px; text-align: center; opacity: 0.4; font-size: 0.8rem; }
