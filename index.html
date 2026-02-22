@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FC Barcelona | Més Que Un Club</title>
+    <title>FC Barcelona | Fan Portal</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
@@ -11,72 +11,74 @@
 
     <header>
         <nav>
-            <div class="logo">BARÇA<span class="gold-dot">.</span></div>
+            <div class="logo">BARÇA<span class="gold-text">CENTER</span></div>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#history">History</a></li>
-                <li><a href="#stats">Stats</a></li>
-                <li><a href="#squad">Squad</a></li>
+                <li><a href="#next-match">Match</a></li>
+                <li><a href="#scorers">Top Scorers</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero" id="home">
-        <div class="hero-overlay">
-            <span class="tagline">EST. 1899</span>
+        <div class="hero-content">
+            <span class="live-tag">LIVE FROM BARCELONA</span>
             <h1>MÉS QUE UN CLUB</h1>
-            <p>The journey of a global icon, from Joan Gamper to the new Spotify Camp Nou.</p>
-            <a href="#history" class="btn-main">Begin the Journey</a>
+            <p>Experience the history and future of the Blaugrana.</p>
         </div>
     </section>
 
-    <div class="stripe-divider"></div>
-
-    <main class="content-wrapper">
-        <section class="section" id="history">
-            <h2 class="title">The Legacy</h2>
-            <div class="grid">
-                <div class="glass-card">
-                    <h3>The Founding</h3>
-                    <p>On November 29, 1899, Joan Gamper and eleven others formed the club that would define Catalonia.</p>
-                </div>
-                <div class="glass-card">
-                    <h3>Total Football</h3>
-                    <p>Johan Cruyff reinvented the game, creating a philosophy that lives on in La Masia today.</p>
-                </div>
-                <div class="glass-card highlight">
-                    <h3>The Sextuple</h3>
-                    <p>In 2009, FC Barcelona became the first club in history to win all six major trophies in one year.</p>
-                </div>
+    <section class="timer-section" id="next-match">
+        <div class="timer-container">
+            <h2>Next Match: <span class="vs">Barça vs Real Madrid</span></h2>
+            <div id="countdown">
+                <div class="time-box"><span id="days">02</span><p>Days</p></div>
+                <div class="time-box"><span id="hours">14</span><p>Hours</p></div>
+                <div class="time-box"><span id="minutes">45</span><p>Mins</p></div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section" id="stats">
-            <h2 class="title">Glory & Stats</h2>
-            <div class="table-container">
-                <table class="modern-table">
-                    <thead>
-                        <tr>
-                            <th>Season</th>
-                            <th>Achievements</th>
-                            <th>Leading Scorer</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>2022-23</td><td>La Liga Champions</td><td>Lewandowski (33)</td></tr>
-                        <tr><td>2014-15</td><td>Historic Treble</td><td>Messi (58)</td></tr>
-                        <tr><td>2008-09</td><td>The Sextuple</td><td>Messi (38)</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </main>
+    <section class="scorers-section" id="scorers">
+        <h2 class="title">All-Time Top Scorers by Season</h2>
+        <div class="table-container">
+            <table class="modern-table">
+                <thead>
+                    <tr>
+                        <th>Season</th>
+                        <th>Top Scorer</th>
+                        <th>Goals (All Comp)</th>
+                        <th>Key Trophy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>2024-25</td><td>Robert Lewandowski</td><td>24*</td><td>-</td></tr>
+                    <tr><td>2022-23</td><td>Robert Lewandowski</td><td>33</td><td>La Liga</td></tr>
+                    <tr><td>2018-19</td><td>Lionel Messi</td><td>51</td><td>La Liga</td></tr>
+                    <tr><td>2014-15</td><td>Lionel Messi</td><td>58</td><td>The Treble</td></tr>
+                    <tr><td>2011-12</td><td>Lionel Messi</td><td>73</td><td>Copa del Rey</td></tr>
+                    <tr><td>2008-09</td><td>Lionel Messi</td><td>38</td><td>The Sextuple</td></tr>
+                    <tr><td>1996-97</td><td>Ronaldo Nazário</td><td>47</td><td>Cup Winners Cup</td></tr>
+                    <tr><td>1951-52</td><td>Ladislao Kubala</td><td>39</td><td>5 Cups</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
     <footer>
-        <p>Visca el Barça i Visca Catalunya</p>
-        <div class="footer-line"></div>
-        <p class="copyright">Class 12 Project &copy; 2026</p>
+        <p>Visca el Barça | Designed for Computer Studies 2026</p>
     </footer>
 
+    <script>
+        // Simple logic to simulate a countdown
+        const days = document.getElementById('days');
+        const hours = document.getElementById('hours');
+        const minutes = document.getElementById('minutes');
+
+        setInterval(() => {
+            let m = parseInt(minutes.innerText);
+            if(m > 0) minutes.innerText = (m - 1).toString().padStart(2, '0');
+        }, 60000);
+    </script>
 </body>
 </html>
