@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FC Barcelona | Fan Portal</title>
+    <title>FC Barcelona | Personal Fan Portal</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
@@ -11,74 +11,107 @@
 
     <header>
         <nav>
-            <div class="logo">BARÇA<span class="gold-text">CENTER</span></div>
+            <div class="logo">BARÇA<span class="gold">STUDIO</span></div>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#next-match">Match</a></li>
-                <li><a href="#scorers">Top Scorers</a></li>
+                <li><a href="#timer">Match</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#stats">Scorers</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero" id="home">
-        <div class="hero-content">
-            <span class="live-tag">LIVE FROM BARCELONA</span>
+        <div class="hero-box">
+            <span class="est">SINCE 1899</span>
             <h1>MÉS QUE UN CLUB</h1>
-            <p>Experience the history and future of the Blaugrana.</p>
+            <p>A personal tribute to the history, the goals, and the legends.</p>
         </div>
     </section>
 
-    <section class="timer-section" id="next-match">
-        <div class="timer-container">
-            <h2>Next Match: <span class="vs">Barça vs Real Madrid</span></h2>
-            <div id="countdown">
-                <div class="time-box"><span id="days">02</span><p>Days</p></div>
-                <div class="time-box"><span id="hours">14</span><p>Hours</p></div>
-                <div class="time-box"><span id="minutes">45</span><p>Mins</p></div>
+    <section class="timer-section" id="timer">
+        <div class="timer-card">
+            <h3>COUNTDOWN TO NEXT MATCH</h3>
+            <div class="countdown-display">
+                <div class="unit"><span id="days">00</span><p>Days</p></div>
+                <div class="unit"><span id="hours">00</span><p>Hours</p></div>
+                <div class="unit"><span id="mins">00</span><p>Mins</p></div>
+                <div class="unit"><span id="secs">00</span><p>Secs</p></div>
             </div>
         </div>
     </section>
 
-    <section class="scorers-section" id="scorers">
-        <h2 class="title">All-Time Top Scorers by Season</h2>
-        <div class="table-container">
-            <table class="modern-table">
-                <thead>
-                    <tr>
-                        <th>Season</th>
-                        <th>Top Scorer</th>
-                        <th>Goals (All Comp)</th>
-                        <th>Key Trophy</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>2024-25</td><td>Robert Lewandowski</td><td>24*</td><td>-</td></tr>
-                    <tr><td>2022-23</td><td>Robert Lewandowski</td><td>33</td><td>La Liga</td></tr>
-                    <tr><td>2018-19</td><td>Lionel Messi</td><td>51</td><td>La Liga</td></tr>
-                    <tr><td>2014-15</td><td>Lionel Messi</td><td>58</td><td>The Treble</td></tr>
-                    <tr><td>2011-12</td><td>Lionel Messi</td><td>73</td><td>Copa del Rey</td></tr>
-                    <tr><td>2008-09</td><td>Lionel Messi</td><td>38</td><td>The Sextuple</td></tr>
-                    <tr><td>1996-97</td><td>Ronaldo Nazário</td><td>47</td><td>Cup Winners Cup</td></tr>
-                    <tr><td>1951-52</td><td>Ladislao Kubala</td><td>39</td><td>5 Cups</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+    <main class="container">
+        <section id="history" class="section">
+            <h2 class="section-title">Club Timeline</h2>
+            <div class="history-grid">
+                <div class="card">
+                    <span class="year">1899</span>
+                    <h4>The Foundation</h4>
+                    <p>Joan Gamper leads the first meeting. The colors Blue and Garnet are chosen.</p>
+                </div>
+                <div class="card gold-border">
+                    <span class="year">2009</span>
+                    <h4>The Sextuple</h4>
+                    <p>Barça wins every single trophy available in a calendar year. Unprecedented.</p>
+                </div>
+                <div class="card">
+                    <span class="year">2015</span>
+                    <h4>The Second Treble</h4>
+                    <p>The MSN trio (Messi, Suárez, Neymar) conquers Europe again.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="stats" class="section">
+            <h2 class="section-title">All-Time Season Top Scorers</h2>
+            <div class="table-wrapper">
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>Season</th>
+                            <th>Top Scorer</th>
+                            <th>Goals</th>
+                            <th>Trophy Won</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>2024-25</td><td>Robert Lewandowski</td><td>24</td><td>-</td></tr>
+                        <tr><td>2022-23</td><td>Robert Lewandowski</td><td>33</td><td>La Liga</td></tr>
+                        <tr><td>2018-19</td><td>Lionel Messi</td><td>51</td><td>La Liga</td></tr>
+                        <tr><td>2015-16</td><td>Luis Suárez</td><td>59</td><td>La Liga / CDR</td></tr>
+                        <tr><td>2011-12</td><td>Lionel Messi</td><td>73</td><td>Copa del Rey</td></tr>
+                        <tr><td>2008-09</td><td>Lionel Messi</td><td>38</td><td>The Sextuple</td></tr>
+                        <tr><td>1996-97</td><td>Ronaldo Nazário</td><td>47</td><td>Cup Winners Cup</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>Visca el Barça | Designed for Computer Studies 2026</p>
+        <p>Visca el Barça! | Developed for Personal Interest & Computer Science</p>
     </footer>
 
     <script>
-        // Simple logic to simulate a countdown
-        const days = document.getElementById('days');
-        const hours = document.getElementById('hours');
-        const minutes = document.getElementById('minutes');
+        function updateTimer() {
+            // Target date: March 1st, 2026 (Example match day)
+            const targetDate = new Date('March 1, 2026 21:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = targetDate - now;
 
-        setInterval(() => {
-            let m = parseInt(minutes.innerText);
-            if(m > 0) minutes.innerText = (m - 1).toString().padStart(2, '0');
-        }, 60000);
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = d.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+            document.getElementById('mins').innerText = m.toString().padStart(2, '0');
+            document.getElementById('secs').innerText = s.toString().padStart(2, '0');
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
     </script>
 </body>
 </html>
