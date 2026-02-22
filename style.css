@@ -5,16 +5,25 @@
     --barca-gold: #EDBB00;
 }
 
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    background-color: #f4f4f4;
+* {
+    box-sizing: border-box;
 }
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header & Nav */
 header {
     background-color: var(--barca-blue);
-    color: white;
-    padding: 1rem 5%;
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav {
@@ -23,23 +32,38 @@ nav {
     align-items: center;
 }
 
+.logo {
+    color: var(--barca-gold);
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
 nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 25px;
+    margin: 0;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
+nav a:hover {
+    color: var(--barca-gold);
+}
+
+/* Hero Section */
 .hero {
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                 url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80');
     background-size: cover;
-    height: 400px;
+    background-position: center;
+    height: 450px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,79 +73,104 @@ nav a {
 }
 
 .hero h1 {
-    font-size: 3rem;
-    border-bottom: 5px solid var(--barca-gold);
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    border-bottom: 4px solid var(--barca-gold);
 }
 
-button {
+.hero button {
     background-color: var(--barca-red);
     color: white;
     border: none;
-    padding: 10px 25px;
+    padding: 12px 30px;
     font-size: 1.1rem;
-    cursor: pointer;
-    border-radius: 5px;
-}/* Official Barça Palette */
-:root {
-    --barca-blue: #004D98;
-    --barca-red: #A50044;
-    --barca-gold: #EDBB00;
-}
-
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    background-color: #f4f4f4;
-}
-
-header {
-    background-color: var(--barca-blue);
-    color: white;
-    padding: 1rem 5%;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
     font-weight: bold;
+    cursor: pointer;
+    border-radius: 50px;
+    margin-top: 20px;
+    transition: 0.3s;
 }
 
-.hero {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80');
-    background-size: cover;
-    height: 400px;
+.hero button:hover {
+    background-color: #7a0032;
+    transform: scale(1.05);
+}
+
+/* THE COLORS BAR - THE STRIPES */
+.colors-bar {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
+    height: 15px;
+    width: 100%;
+}
+
+.blue-stripe { background-color: var(--barca-blue); flex: 1; }
+.red-stripe { background-color: var(--barca-red); flex: 1; }
+
+/* Squad Table */
+.squad-section {
+    padding: 50px 10%;
     text-align: center;
 }
 
-.hero h1 {
-    font-size: 3rem;
-    border-bottom: 5px solid var(--barca-gold);
+.table-container {
+    overflow-x: auto; /* Good for mobile screens */
 }
 
-button {
-    background-color: var(--barca-red);
+.squad-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.squad-table th {
+    background-color: var(--barca-blue);
     color: white;
-    border: none;
-    padding: 10px 25px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    border-radius: 5px;
+    padding: 15px;
+}
+
+.squad-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.squad-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Gallery Section */
+.gallery-section {
+    padding: 50px 10%;
+    background-color: #eee;
+    text-align: center;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.photo-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
 }
