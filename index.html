@@ -3,107 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FC Barcelona | History & Stats Hub</title>
+    <title>FC Barcelona | Més que un club</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <nav>
-            <div class="logo">BARÇA HISTORY</div>
+            <div class="logo">BARÇA <span class="gold-text">HUB</span></div>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#history">Timeline</a></li>
-                <li><a href="#trophies">Trophies</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#trophies">Glory</a></li>
                 <li><a href="#squad">Squad</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero" id="home">
-        <h1>Més que un club</h1>
-        <p>Founded Nov 29, 1899. 125+ Years of Greatness.</p>
-        <button onclick="window.location.href='#history'">Explore the Journey</button>
+        <div class="hero-content">
+            <h1>VISCA EL BARÇA</h1>
+            <p>125 Years of Blaugrana Passion</p>
+            <button onclick="window.location.href='#history'">Enter the History</button>
+        </div>
     </section>
 
     <section class="colors-bar">
-        <div class="blue-stripe"></div><div class="red-stripe"></div>
-        <div class="blue-stripe"></div><div class="red-stripe"></div>
-        <div class="blue-stripe"></div><div class="red-stripe"></div>
-        <div class="blue-stripe"></div><div class="red-stripe"></div>
+        <div class="stripe blue"></div>
+        <div class="stripe red"></div>
+        <div class="stripe blue"></div>
+        <div class="stripe red"></div>
     </section>
 
-    <section class="history-section" id="history">
-        <h2>Key Eras in History</h2>
-        <div class="timeline">
-            <div class="time-card">
-                <h3>1899</h3>
-                <p><strong>Founding:</strong> Joan Gamper leads the first meeting at Solé Gym. The colors blue and garnet are chosen.</p>
+    <main class="main-content">
+        <section class="history-section" id="history">
+            <h2 class="section-title">The Legend Begins</h2>
+            <div class="timeline">
+                <div class="time-card">
+                    <h3>1899</h3>
+                    <p>Founded by Joan Gamper. The colors were inspired by the Swiss club Basel.</p>
+                </div>
+                <div class="time-card highlight">
+                    <h3>2009</h3>
+                    <p>The Year of 6 Trophies. Perfect football under Pep Guardiola.</p>
+                </div>
+                <div class="time-card">
+                    <h3>2026</h3>
+                    <p>A new era at the Spotify Camp Nou begins with the world's best youth.</p>
+                </div>
             </div>
-            <div class="time-card">
-                <h3>1974</h3>
-                <p><strong>Cruyff Era:</strong> Johan Cruyff joins as a player, later returning as coach to create the 'Dream Team'.</p>
-            </div>
-            <div class="time-card highlight">
-                <h3>2009</h3>
-                <p><strong>The Sextuple:</strong> Under Pep Guardiola, Barça becomes the first club ever to win 6 trophies in one year.</p>
-            </div>
-            <div class="time-card">
-                <h3>2015</h3>
-                <p><strong>MSN Era:</strong> Messi, Suárez, and Neymar lead the club to its second historic Treble.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="trophy-section" id="trophies">
-        <h2>Trophy Cabinet & Season Leaders</h2>
-        <div class="table-container">
-            <table class="history-table">
-                <thead>
-                    <tr>
-                        <th>Season</th>
-                        <th>Major Trophy</th>
-                        <th>Top Scorer</th>
-                        <th>Total Goals</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>2022-23</td><td>La Liga</td><td>Robert Lewandowski</td><td>33</td></tr>
-                    <tr><td>2014-15</td><td>UCL, La Liga, CDR</td><td>Lionel Messi</td><td>58</td></tr>
-                    <tr><td>2010-11</td><td>UCL, La Liga</td><td>Lionel Messi</td><td>53</td></tr>
-                    <tr><td>2008-09</td><td>The Sextuple</td><td>Lionel Messi</td><td>38</td></tr>
-                    <tr><td>1991-92</td><td>European Cup</td><td>Hristo Stoichkov</td><td>22</td></tr>
-                    <tr><td>1951-52</td><td>The Five Cups</td><td>Ladislao Kubala</td><td>39</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <section class="squad-section" id="squad">
-        <h2>Current First Team</h2>
-        <div class="table-container">
-            <table class="squad-table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Player</th>
-                        <th>Position</th>
-                        <th>From</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>19</td><td>Lamine Yamal</td><td>Forward</td><td>La Masia</td></tr>
-                    <tr><td>8</td><td>Pedri</td><td>Midfielder</td><td>Las Palmas</td></tr>
-                    <tr><td>6</td><td>Gavi</td><td>Midfielder</td><td>La Masia</td></tr>
-                    <tr><td>4</td><td>Ronald Araújo</td><td>Defender</td><td>Barça B</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+        <section class="trophy-section" id="trophies">
+            <h2 class="section-title">The Trophy Cabinet</h2>
+            <div class="table-container">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Season</th>
+                            <th>Trophy Won</th>
+                            <th>Top Scorer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>2022-23</td><td>La Liga</td><td>Lewandowski</td></tr>
+                        <tr><td>2014-15</td><td>UCL / Treble</td><td>Lionel Messi</td></tr>
+                        <tr><td>2008-09</td><td>The Sextuple</td><td>Lionel Messi</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>Visca el Barça i Visca Catalunya!</p>
-        <p style="font-size: 0.8rem; opacity: 0.7;">Official Colors: #004D98 & #A50044</p>
+        <p>Més que un club | Designed for 2026</p>
     </footer>
 
 </body>
