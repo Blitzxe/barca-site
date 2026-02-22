@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FC Barcelona | Personal Fan Portal</title>
+    <title>Barça Hub | Personal Fan Portal</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
@@ -15,8 +15,7 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#timer">Match</a></li>
-                <li><a href="#history">History</a></li>
-                <li><a href="#stats">Scorers</a></li>
+                <li><a href="#stats">History</a></li>
             </ul>
         </nav>
     </header>
@@ -31,7 +30,8 @@
 
     <section class="timer-section" id="timer">
         <div class="timer-card">
-            <h3>COUNTDOWN TO NEXT MATCH</h3>
+            <h3>NEXT MATCH: <span class="vs">BARÇA vs VILLARREAL</span></h3>
+            <p class="match-date">February 28, 2026 - 16:15 CET</p>
             <div class="countdown-display">
                 <div class="unit"><span id="days">00</span><p>Days</p></div>
                 <div class="unit"><span id="hours">00</span><p>Hours</p></div>
@@ -42,29 +42,8 @@
     </section>
 
     <main class="container">
-        <section id="history" class="section">
-            <h2 class="section-title">Club Timeline</h2>
-            <div class="history-grid">
-                <div class="card">
-                    <span class="year">1899</span>
-                    <h4>The Foundation</h4>
-                    <p>Joan Gamper leads the first meeting. The colors Blue and Garnet are chosen.</p>
-                </div>
-                <div class="card gold-border">
-                    <span class="year">2009</span>
-                    <h4>The Sextuple</h4>
-                    <p>Barça wins every single trophy available in a calendar year. Unprecedented.</p>
-                </div>
-                <div class="card">
-                    <span class="year">2015</span>
-                    <h4>The Second Treble</h4>
-                    <p>The MSN trio (Messi, Suárez, Neymar) conquers Europe again.</p>
-                </div>
-            </div>
-        </section>
-
         <section id="stats" class="section">
-            <h2 class="section-title">All-Time Season Top Scorers</h2>
+            <h2 class="section-title">All-Time Season Leaders</h2>
             <div class="table-wrapper">
                 <table class="stats-table">
                     <thead>
@@ -72,17 +51,21 @@
                             <th>Season</th>
                             <th>Top Scorer</th>
                             <th>Goals</th>
-                            <th>Trophy Won</th>
+                            <th>Major Achievement</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>2024-25</td><td>Robert Lewandowski</td><td>24</td><td>-</td></tr>
-                        <tr><td>2022-23</td><td>Robert Lewandowski</td><td>33</td><td>La Liga</td></tr>
-                        <tr><td>2018-19</td><td>Lionel Messi</td><td>51</td><td>La Liga</td></tr>
-                        <tr><td>2015-16</td><td>Luis Suárez</td><td>59</td><td>La Liga / CDR</td></tr>
-                        <tr><td>2011-12</td><td>Lionel Messi</td><td>73</td><td>Copa del Rey</td></tr>
-                        <tr><td>2008-09</td><td>Lionel Messi</td><td>38</td><td>The Sextuple</td></tr>
-                        <tr><td>1996-97</td><td>Ronaldo Nazário</td><td>47</td><td>Cup Winners Cup</td></tr>
+                        <tr><td>2024-25</td><td>Robert Lewandowski</td><td>24*</td><td>Current Season</td></tr>
+                        <tr><td>2022-23</td><td>Robert Lewandowski</td><td>33</td><td>La Liga Champions</td></tr>
+                        <tr><td>2018-19</td><td>Lionel Messi <span class="badge">GOAT</span></td><td>51</td><td>La Liga</td></tr>
+                        <tr><td>2015-16</td><td>Luis Suárez</td><td>59</td><td>Golden Shoe Winner</td></tr>
+                        <tr><td>2014-15</td><td>Lionel Messi <span class="badge">GOAT</span></td><td>58</td><td>The Treble</td></tr>
+                        <tr><td>2011-12</td><td>Lionel Messi <span class="badge">GOAT</span></td><td>73</td><td>World Record</td></tr>
+                        <tr><td>2008-09</td><td>Lionel Messi <span class="badge">GOAT</span></td><td>38</td><td>The Sextuple</td></tr>
+                        <tr><td>2005-06</td><td>Samuel Eto'o</td><td>34</td><td>UCL & Liga</td></tr>
+                        <tr><td>1996-97</td><td>Ronaldo Nazário</td><td>47</td><td>Pichichi</td></tr>
+                        <tr><td>1993-94</td><td>Romário</td><td>32</td><td>Dream Team</td></tr>
+                        <tr><td>1951-52</td><td>Ladislao Kubala</td><td>39</td><td>5 Cups</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -90,20 +73,19 @@
     </main>
 
     <footer>
-        <p>Visca el Barça! | Developed for Personal Interest & Computer Science</p>
+        <p>Visca el Barça! | Personal Hub &copy; 2026</p>
     </footer>
 
     <script>
         function updateTimer() {
-            // Target date: March 1st, 2026 (Example match day)
-            const targetDate = new Date('March 1, 2026 21:00:00').getTime();
+            const matchDate = new Date('Feb 28, 2026 16:15:00').getTime();
             const now = new Date().getTime();
-            const diff = targetDate - now;
+            const gap = matchDate - now;
 
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
+            const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
+
+            const d = Math.floor(gap / day), h = Math.floor((gap % day) / hour), 
+                  m = Math.floor((gap % hour) / minute), s = Math.floor((gap % minute) / second);
 
             document.getElementById('days').innerText = d.toString().padStart(2, '0');
             document.getElementById('hours').innerText = h.toString().padStart(2, '0');
