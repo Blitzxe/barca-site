@@ -3,72 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FC Barcelona | Més que un club</title>
+    <title>FC Barcelona | Més Que Un Club</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
         <nav>
-            <div class="logo">BARÇA <span class="gold-text">HUB</span></div>
+            <div class="logo">BARÇA<span class="gold-dot">.</span></div>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#history">History</a></li>
-                <li><a href="#trophies">Glory</a></li>
+                <li><a href="#stats">Stats</a></li>
                 <li><a href="#squad">Squad</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>VISCA EL BARÇA</h1>
-            <p>125 Years of Blaugrana Passion</p>
-            <button onclick="window.location.href='#history'">Enter the History</button>
+        <div class="hero-overlay">
+            <span class="tagline">EST. 1899</span>
+            <h1>MÉS QUE UN CLUB</h1>
+            <p>The journey of a global icon, from Joan Gamper to the new Spotify Camp Nou.</p>
+            <a href="#history" class="btn-main">Begin the Journey</a>
         </div>
     </section>
 
-    <section class="colors-bar">
-        <div class="stripe blue"></div>
-        <div class="stripe red"></div>
-        <div class="stripe blue"></div>
-        <div class="stripe red"></div>
-    </section>
+    <div class="stripe-divider"></div>
 
-    <main class="main-content">
-        <section class="history-section" id="history">
-            <h2 class="section-title">The Legend Begins</h2>
-            <div class="timeline">
-                <div class="time-card">
-                    <h3>1899</h3>
-                    <p>Founded by Joan Gamper. The colors were inspired by the Swiss club Basel.</p>
+    <main class="content-wrapper">
+        <section class="section" id="history">
+            <h2 class="title">The Legacy</h2>
+            <div class="grid">
+                <div class="glass-card">
+                    <h3>The Founding</h3>
+                    <p>On November 29, 1899, Joan Gamper and eleven others formed the club that would define Catalonia.</p>
                 </div>
-                <div class="time-card highlight">
-                    <h3>2009</h3>
-                    <p>The Year of 6 Trophies. Perfect football under Pep Guardiola.</p>
+                <div class="glass-card">
+                    <h3>Total Football</h3>
+                    <p>Johan Cruyff reinvented the game, creating a philosophy that lives on in La Masia today.</p>
                 </div>
-                <div class="time-card">
-                    <h3>2026</h3>
-                    <p>A new era at the Spotify Camp Nou begins with the world's best youth.</p>
+                <div class="glass-card highlight">
+                    <h3>The Sextuple</h3>
+                    <p>In 2009, FC Barcelona became the first club in history to win all six major trophies in one year.</p>
                 </div>
             </div>
         </section>
 
-        <section class="trophy-section" id="trophies">
-            <h2 class="section-title">The Trophy Cabinet</h2>
+        <section class="section" id="stats">
+            <h2 class="title">Glory & Stats</h2>
             <div class="table-container">
-                <table class="history-table">
+                <table class="modern-table">
                     <thead>
                         <tr>
                             <th>Season</th>
-                            <th>Trophy Won</th>
-                            <th>Top Scorer</th>
+                            <th>Achievements</th>
+                            <th>Leading Scorer</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>2022-23</td><td>La Liga</td><td>Lewandowski</td></tr>
-                        <tr><td>2014-15</td><td>UCL / Treble</td><td>Lionel Messi</td></tr>
-                        <tr><td>2008-09</td><td>The Sextuple</td><td>Lionel Messi</td></tr>
+                        <tr><td>2022-23</td><td>La Liga Champions</td><td>Lewandowski (33)</td></tr>
+                        <tr><td>2014-15</td><td>Historic Treble</td><td>Messi (58)</td></tr>
+                        <tr><td>2008-09</td><td>The Sextuple</td><td>Messi (38)</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -76,7 +73,9 @@
     </main>
 
     <footer>
-        <p>Més que un club | Designed for 2026</p>
+        <p>Visca el Barça i Visca Catalunya</p>
+        <div class="footer-line"></div>
+        <p class="copyright">Class 12 Project &copy; 2026</p>
     </footer>
 
 </body>
