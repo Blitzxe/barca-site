@@ -14,6 +14,7 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#squad">Squad</a></li>
+                <li><a href="#stats">Stats</a></li>
                 <li><a href="#gallery">Gallery</a></li>
             </ul>
         </nav>
@@ -22,10 +23,12 @@
     <section class="hero" id="home">
         <h1>Visca el Barça!</h1>
         <p>Exploring the history and future of the world's greatest club.</p>
-        <button onclick="window.location.href='#squad'">View Squad</button>
+        <button onclick="window.location.href='#squad'">Explore Squad</button>
     </section>
 
     <section class="colors-bar">
+        <div class="blue-stripe"></div>
+        <div class="red-stripe"></div>
         <div class="blue-stripe"></div>
         <div class="red-stripe"></div>
         <div class="blue-stripe"></div>
@@ -54,6 +57,41 @@
         </div>
     </section>
 
+    <section class="scorers-section" id="stats">
+        <h2>Golden Boot Race</h2>
+        <div class="stats-container">
+            <div class="stat-row">
+                <div class="stat-info">
+                    <span>Robert Lewandowski</span>
+                    <span>24 Goals</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 90%;"></div>
+                </div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-info">
+                    <span>Lamine Yamal</span>
+                    <span>15 Goals</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%;"></div>
+                </div>
+            </div>
+
+            <div class="stat-row">
+                <div class="stat-info">
+                    <span>Raphinha</span>
+                    <span>12 Goals</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 50%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="gallery-section" id="gallery">
         <h2>Match Day Visuals</h2>
         <div class="gallery-grid">
@@ -73,7 +111,8 @@
     </section>
 
     <footer>
-        <p>Created by a Barça Fan &copy; 2026</p>
+        <p>Created with ❤️ by a Barça Fan &copy; 2026</p>
+        <p style="font-size: 0.8rem; color: #888;">Més que un club</p>
     </footer>
 
 </body>
