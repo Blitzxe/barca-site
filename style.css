@@ -7,80 +7,58 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg);
-    color: white;
-}
-
-header {
-    background: rgba(0, 12, 26, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 20px 8%;
-    position: fixed; width: 100%; top: 0; z-index: 1000;
-}
-
-nav { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-weight: 900; font-size: 1.5rem; color: var(--gold); }
-nav ul { display: flex; list-style: none; gap: 30px; }
-nav a { color: white; text-decoration: none; font-weight: 600; font-size: 0.8rem; }
-
-/* HERO BACKGROUND - SHAPING THE FUTURE */
+/* HERO BACKGROUND */
 .hero {
     height: 80vh;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                 url('https://www.fcbarcelona.com/fcbarcelona/photo/2024/07/11/shaping-the-future.jpg');
-    background-size: cover; 
-    background-position: center 20%;
+    background-size: cover; background-position: center 20%;
     display: flex; align-items: center; justify-content: center; text-align: center;
 }
-.hero h1 { font-size: 4.5rem; font-weight: 900; }
+.hero h1 { font-size: clamp(2rem, 10vw, 5rem); font-weight: 900; }
 .tagline { color: var(--gold); letter-spacing: 5px; font-weight: 800; }
 
-/* THE TIMER - HORIZONTAL & YELLOW FIX */
+/* THE TIMER - FORCED HORIZONTAL GRID */
 .timer-section { padding: 0 8%; margin-top: -80px; }
 .timer-card {
     background: linear-gradient(135deg, var(--blue), var(--red));
-    padding: 40px; border-radius: 20px; text-align: center;
+    padding: 30px; border-radius: 20px; text-align: center;
     box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    max-width: 800px; margin-left: auto; margin-right: auto;
 }
 
-.countdown-row {
-    display: flex !important;
-    flex-direction: row !important; /* FORCES HORIZONTAL */
-    justify-content: center;
+.countdown-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important; /* HARD-CODED 4 COLUMNS */
+    gap: 10px;
+    margin-top: 20px;
     align-items: center;
-    gap: 40px;
-    margin-top: 25px;
 }
 
-.time-unit span { 
-    font-size: 4rem; 
+.time-box span, .time-unit span { 
+    font-size: clamp(1.5rem, 8vw, 4rem); 
     font-weight: 900; 
     color: var(--gold) !important; /* FORCED YELLOW */
-    display: block; 
-    line-height: 1; 
+    display: block;
+    line-height: 1;
 }
 
-.time-unit p { font-size: 0.8rem; text-transform: uppercase; opacity: 0.7; margin-top: 5px; }
+.time-box p, .time-unit p { font-size: 0.7rem; text-transform: uppercase; opacity: 0.7; margin-top: 5px; }
 
-/* TROPHIES & TABLE */
+/* TROPHY ROW */
+.trophy-row { display: flex; justify-content: center; gap: 40px; margin: 40px 0; }
+.trophy-item { text-align: center; }
+.trophy-item img { width: 80px; filter: drop-shadow(0 0 10px var(--gold)); margin-bottom: 10px; }
+
+/* TABLE */
 .container { padding: 80px 8%; }
-.section-title { font-size: 2.5rem; margin-bottom: 40px; border-left: 8px solid var(--gold); padding-left: 20px; }
-.cabinet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin: 40px 0; }
-.trophy-card { background: var(--navy); padding: 30px; border-radius: 20px; text-align: center; }
-.trophy-card img { width: 120px; margin-bottom: 15px; filter: drop-shadow(0 0 10px var(--gold)); }
-.empty { color: #ff4d4d; font-style: italic; }
-.table-wrapper { background: var(--navy); border-radius: 20px; overflow: hidden; }
-.stats-table { width: 100%; border-collapse: collapse; }
-.stats-table th { background: rgba(0,0,0,0.3); padding: 20px; text-align: left; color: var(--gold); }
-.stats-table td { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.section-title { font-size: 2rem; margin-bottom: 30px; border-left: 5px solid var(--gold); padding-left: 15px; }
+.trophyless { color: #ff4d4d; font-style: italic; }
+.table-wrapper { background: var(--navy); border-radius: 20px; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th { background: rgba(0,0,0,0.3); padding: 15px; text-align: left; color: var(--gold); }
+td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-footer { padding: 60px; text-align: center; opacity: 0.4; }
-
-@media (max-width: 600px) {
-    .countdown-row { gap: 15px; }
-    .time-unit span { font-size: 2rem; }
-}
+footer { padding: 40px; text-align: center; opacity: 0.4; font-size: 0.8rem; }
