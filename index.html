@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barça Hub | Personal Fan Portal</title>
+    <title>Barça Site | Personal Fan Portal</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
@@ -11,11 +11,12 @@
 
     <header>
         <nav>
-            <div class="logo">BARÇA<span class="gold">STUDIO</span></div>
+            <div class="logo">BARÇA<span class="gold">SITE</span></div>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#timer">Match</a></li>
-                <li><a href="#stats">History</a></li>
+                <li><a href="#legends">Legends</a></li>
+                <li><a href="#stats">Scorers</a></li>
             </ul>
         </nav>
     </header>
@@ -24,14 +25,14 @@
         <div class="hero-box">
             <span class="est">SINCE 1899</span>
             <h1>MÉS QUE UN CLUB</h1>
-            <p>A personal tribute to the history, the goals, and the legends.</p>
+            <p>A personal tribute to the history and legends of FC Barcelona.</p>
         </div>
     </section>
 
     <section class="timer-section" id="timer">
         <div class="timer-card">
             <h3>NEXT MATCH: <span class="vs">BARÇA vs VILLARREAL</span></h3>
-            <p class="match-date">February 28, 2026 - 16:15 CET</p>
+            <p class="match-info">Spotify Camp Nou | Feb 28, 2026 - 16:15 CET</p>
             <div class="countdown-display">
                 <div class="unit"><span id="days">00</span><p>Days</p></div>
                 <div class="unit"><span id="hours">00</span><p>Hours</p></div>
@@ -42,8 +43,35 @@
     </section>
 
     <main class="container">
+        <section id="legends" class="section">
+            <h2 class="section-title">Club Legends</h2>
+            <div class="legends-grid">
+                <div class="legend-card">
+                    <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=300&q=80" alt="Johan Cruyff">
+                    <div class="legend-info">
+                        <h4>Johan Cruyff</h4>
+                        <p>The man who changed our DNA forever.</p>
+                    </div>
+                </div>
+                <div class="legend-card">
+                    <img src="https://images.unsplash.com/photo-1543351611-58f69d7c1781?auto=format&fit=crop&w=300&q=80" alt="Ronaldinho">
+                    <div class="legend-info">
+                        <h4>Ronaldinho</h4>
+                        <p>The smile that brought back the joy.</p>
+                    </div>
+                </div>
+                <div class="legend-card">
+                    <img src="https://images.unsplash.com/photo-1552318975-27db10d715d8?auto=format&fit=crop&w=300&q=80" alt="Xavi & Iniesta">
+                    <div class="legend-info">
+                        <h4>Xavi & Iniesta</h4>
+                        <p>The masters of the midfield.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="stats" class="section">
-            <h2 class="section-title">All-Time Season Leaders</h2>
+            <h2 class="section-title">Seasonal Top Scorers</h2>
             <div class="table-wrapper">
                 <table class="stats-table">
                     <thead>
@@ -51,21 +79,17 @@
                             <th>Season</th>
                             <th>Top Scorer</th>
                             <th>Goals</th>
-                            <th>Major Achievement</th>
+                            <th>Achievements</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>2024-25</td><td>Robert Lewandowski</td><td>24*</td><td>Current Season</td></tr>
+                        <tr><td>2025-26</td><td>Ferran Torres</td><td>22*</td><td>In Progress</td></tr>
+                        <tr><td>2024-25</td><td>Robert Lewandowski</td><td>34</td><td>La Liga Golden Boot</td></tr>
                         <tr><td>2022-23</td><td>Robert Lewandowski</td><td>33</td><td>La Liga Champions</td></tr>
                         <tr><td>2018-19</td><td>Lionel Messi <span class="badge">GOAT</span></td><td>51</td><td>La Liga</td></tr>
-                        <tr><td>2015-16</td><td>Luis Suárez</td><td>59</td><td>Golden Shoe Winner</td></tr>
+                        <tr><td>2015-16</td><td>Luis Suárez</td><td>59</td><td>Golden Shoe</td></tr>
                         <tr><td>2014-15</td><td>Lionel Messi <span class="badge">GOAT</span></td><td>58</td><td>The Treble</td></tr>
                         <tr><td>2011-12</td><td>Lionel Messi <span class="badge">GOAT</span></td><td>73</td><td>World Record</td></tr>
-                        <tr><td>2008-09</td><td>Lionel Messi <span class="badge">GOAT</span></td><td>38</td><td>The Sextuple</td></tr>
-                        <tr><td>2005-06</td><td>Samuel Eto'o</td><td>34</td><td>UCL & Liga</td></tr>
-                        <tr><td>1996-97</td><td>Ronaldo Nazário</td><td>47</td><td>Pichichi</td></tr>
-                        <tr><td>1993-94</td><td>Romário</td><td>32</td><td>Dream Team</td></tr>
-                        <tr><td>1951-52</td><td>Ladislao Kubala</td><td>39</td><td>5 Cups</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -73,7 +97,7 @@
     </main>
 
     <footer>
-        <p>Visca el Barça! | Personal Hub &copy; 2026</p>
+        <p>Visca el Barça! | <strong>barca-site</strong> &copy; 2026</p>
     </footer>
 
     <script>
@@ -84,8 +108,10 @@
 
             const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
 
-            const d = Math.floor(gap / day), h = Math.floor((gap % day) / hour), 
-                  m = Math.floor((gap % hour) / minute), s = Math.floor((gap % minute) / second);
+            const d = Math.floor(gap / day);
+            const h = Math.floor((gap % day) / hour);
+            const m = Math.floor((gap % hour) / minute);
+            const s = Math.floor((gap % minute) / second);
 
             document.getElementById('days').innerText = d.toString().padStart(2, '0');
             document.getElementById('hours').innerText = h.toString().padStart(2, '0');
