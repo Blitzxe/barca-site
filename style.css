@@ -1,90 +1,89 @@
-/* 1. VARIABLES - THE OFFICIAL PALETTE */
 :root {
-    --navy: #001E3C;
+    --navy: #001229;
     --barca-blue: #004D98;
     --barca-red: #A50044;
     --gold: #EDBB00;
-    --text-white: #ffffff;
     --glass: rgba(255, 255, 255, 0.05);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--navy);
-    background: radial-gradient(circle at 0% 0%, #002d5a 0%, #001E3C 100%);
-    color: var(--text-white);
+    color: white;
     line-height: 1.6;
 }
 
-/* 2. NAVIGATION - CLEAN & FIXED */
 header {
+    background: rgba(0, 18, 41, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 1rem 8%;
     position: fixed; width: 100%; top: 0; z-index: 1000;
-    padding: 1.5rem 8%;
-    background: rgba(0, 30, 60, 0.8);
-    backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 nav { display: flex; justify-content: space-between; align-items: center; }
-
-.logo { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; }
-.gold-dot { color: var(--gold); }
+.logo { font-weight: 900; font-size: 1.5rem; letter-spacing: 1px; color: var(--gold); }
 
 nav ul { display: flex; list-style: none; gap: 30px; }
-nav a { text-decoration: none; color: rgba(255,255,255,0.7); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+nav a { text-decoration: none; color: white; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
 nav a:hover { color: var(--gold); }
 
-/* 3. HERO - IMPACTFUL */
+/* HERO */
 .hero {
-    height: 90vh;
-    background: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1500&q=80') center/cover;
-    display: flex; align-items: center; justify-content: center;
+    height: 70vh;
+    background: linear-gradient(rgba(0,18,41,0.7), rgba(0,18,41,0.7)), 
+                url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1500&q=80') center/cover;
+    display: flex; align-items: center; justify-content: center; text-align: center;
 }
 
-.hero-overlay {
-    text-align: center; background: rgba(0,0,0,0.4); padding: 40px; border-radius: 20px; backdrop-filter: blur(5px);
+.live-tag { color: var(--gold); font-size: 0.8rem; font-weight: bold; letter-spacing: 3px; }
+.hero h1 { font-size: 4rem; font-weight: 900; margin: 10px 0; }
+
+/* TIMER SECTION */
+.timer-section {
+    padding: 50px 8%;
+    background: linear-gradient(180deg, var(--barca-blue), var(--navy));
+    text-align: center;
 }
 
-.tagline { color: var(--gold); letter-spacing: 4px; font-weight: 700; font-size: 0.8rem; }
-.hero h1 { font-size: 4.5rem; font-weight: 900; margin: 10px 0; }
-.hero p { opacity: 0.8; max-width: 500px; margin: 0 auto; }
-
-.btn-main {
-    display: inline-block; margin-top: 30px; padding: 15px 35px;
-    background: var(--barca-red); color: white; text-decoration: none;
-    border-radius: 5px; font-weight: 700; transition: 0.3s;
+.timer-container {
+    background: var(--glass);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--gold);
 }
 
-.btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(165,0,68,0.4); }
+.vs { color: var(--gold); font-style: italic; }
 
-/* 4. DESIGN ELEMENTS */
-.stripe-divider { height: 6px; background: linear-gradient(90deg, var(--barca-blue) 50%, var(--barca-red) 50%); }
-
-.content-wrapper { padding: 80px 8%; }
-.title { font-size: 2.5rem; margin-bottom: 40px; border-left: 5px solid var(--gold); padding-left: 20px; }
-
-/* 5. CARDS & TABLES */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-
-.glass-card {
-    background: var(--glass); padding: 35px; border-radius: 15px;
-    border: 1px solid rgba(255,255,255,0.1); transition: 0.3s;
+#countdown {
+    display: flex; justify-content: center; gap: 30px; margin-top: 30px;
 }
 
-.glass-card:hover { background: rgba(255,255,255,0.08); border-color: var(--barca-blue); }
-.glass-card.highlight { border-color: var(--gold); }
-.glass-card h3 { color: var(--gold); margin-bottom: 15px; }
+.time-box span { font-size: 3rem; font-weight: 900; color: var(--gold); }
+.time-box p { font-size: 0.8rem; text-transform: uppercase; opacity: 0.7; }
 
-.table-container { margin-top: 20px; background: var(--glass); border-radius: 15px; overflow: hidden; }
+/* TABLE SECTION */
+.scorers-section { padding: 80px 8%; }
+.title { font-size: 2rem; margin-bottom: 40px; text-align: center; }
+
+.table-container {
+    background: var(--glass);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
 .modern-table { width: 100%; border-collapse: collapse; }
 .modern-table th { background: rgba(255,255,255,0.05); padding: 20px; text-align: left; color: var(--gold); }
-.modern-table td { padding: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+.modern-table td { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-/* 6. FOOTER */
-footer { padding: 60px 8%; text-align: center; background: #000b16; }
-.footer-line { width: 50px; height: 2px; background: var(--gold); margin: 20px auto; }
-.copyright { opacity: 0.4; font-size: 0.8rem; }
+/* UNIQUE HOVER */
+.modern-table tr:hover {
+    background: rgba(165, 0, 68, 0.2);
+    cursor: pointer;
+}
+
+footer { padding: 40px; text-align: center; border-top: 1px solid var(--gold); }
