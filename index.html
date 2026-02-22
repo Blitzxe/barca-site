@@ -14,24 +14,24 @@
             <div class="logo">BARÇA<span class="gold">SITE</span></div>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#timer">Next Match</a></li>
+                <li><a href="#timer">Match</a></li>
                 <li><a href="#trophies">Trophies</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero" id="home">
-        <div class="hero-box">
-            <span class="est">SHAPING THE FUTURE</span>
+        <div class="hero-overlay">
+            <span class="est">BARCELONA, SPAIN</span>
             <h1>VISCA EL BARÇA</h1>
-            <p>The journey of the Blaugrana continues.</p>
+            <p>A new era of excellence at the Spotify Camp Nou.</p>
         </div>
     </section>
 
     <section class="timer-section" id="timer">
         <div class="timer-card">
-            <h3>NEXT MATCH: <span id="match-opponent" class="vs">BARÇA vs VILLARREAL</span></h3>
-            <p id="match-date-text" class="match-info">Spotify Camp Nou | 28 Feb 2026 - 20:45 IST</p>
+            <h3>NEXT MATCH: <span id="match-opponent" class="vs">LOADING...</span></h3>
+            <p id="match-date-text" class="match-info">Updating Fixtures...</p>
             
             <div class="countdown-display">
                 <div class="unit"><span id="days">00</span><p>Days</p></div>
@@ -47,7 +47,7 @@
             <h2 class="section-title">Major Honours</h2>
             <div class="cabinet-grid">
                 <div class="trophy-card">
-                    <img src="https://www.stickpng.com/assets/images/584d9342367b6a13e54477ee.png" alt="UCL">
+                    <img src="https://www.stickpng.com/assets/images/584d9342367b6a13e54477ee.png" alt="Champions League">
                     <p>5 Champions League</p>
                 </div>
                 <div class="trophy-card">
@@ -66,14 +66,14 @@
                     <thead>
                         <tr>
                             <th>Season</th>
-                            <th>Trophy Won</th>
+                            <th>Trophies Won</th>
                             <th>Top Scorer</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr><td>2024-25</td><td>🏆 La Liga, 🏆 Copa del Rey</td><td>Lewandowski</td></tr>
                         <tr><td>2023-24</td><td class="trophyless">Gone trophyless this season</td><td>Lewandowski</td></tr>
-                        <tr><td>2022-23</td><td>🏆 La Liga, 🏆 Super Cup</td><td>Lewandowski</td></tr>
+                        <tr><td>2022-23</td><td>🏆 La Liga, 🏆 Spanish Super Cup</td><td>Lewandowski</td></tr>
                         <tr><td>2021-22</td><td class="trophyless">Gone trophyless this season</td><td>Memphis Depay</td></tr>
                         <tr><td>2020-21</td><td>🏆 Copa del Rey</td><td>Lionel Messi</td></tr>
                         <tr><td>2019-20</td><td class="trophyless">Gone trophyless this season</td><td>Lionel Messi</td></tr>
@@ -85,11 +85,11 @@
     </main>
 
     <footer>
-        <p>Visca el Barça! | 24/7 Auto-Sync Enabled &copy; 2026</p>
+        <p>Visca el Barça! | barca-site &copy; 2026</p>
     </footer>
 
     <script>
-        // Array of upcoming matches
+        // Automatic Fixture List
         const fixtures = [
             { opponent: "BARÇA vs VILLARREAL", date: "Feb 28, 2026 20:45:00" },
             { opponent: "BARÇA vs BENFICA", date: "Mar 04, 2026 01:30:00" },
@@ -98,18 +98,16 @@
 
         function updateTimer() {
             const now = new Date().getTime();
+            // Find the first match that is in the future
             let currentMatch = fixtures.find(f => new Date(f.date).getTime() > now);
 
-            // If no more matches in list, show a default message
             if (!currentMatch) {
-                document.getElementById('match-opponent').innerText = "SEASON ENDED";
-                document.getElementById('match-date-text').innerText = "Visca el Barça!";
+                document.getElementById('match-opponent').innerText = "SEASON FINISHED";
                 return;
             }
 
-            // Update display text
             document.getElementById('match-opponent').innerText = currentMatch.opponent;
-            document.getElementById('match-date-text').innerText = currentMatch.date + " IST";
+            document.getElementById('match-date-text').innerText = "Saturday, " + currentMatch.date + " IST";
 
             const gap = new Date(currentMatch.date).getTime() - now;
             const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
