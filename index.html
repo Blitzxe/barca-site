@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barça Site | Personal Portal</title>
+    <title>Barça Site | Hub</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
@@ -15,7 +15,7 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#timer">Match</a></li>
-                <li><a href="#trophies">Trophies</a></li>
+                <li><a href="#trophies">History</a></li>
             </ul>
         </nav>
     </header>
@@ -31,12 +31,12 @@
     <section class="timer-section" id="timer">
         <div class="timer-card">
             <h3>NEXT MATCH: <span class="vs">BARÇA vs VILLARREAL</span></h3>
-            <p class="match-info">Saturday, 28 Feb 2026 - 20:45 IST</p>
+            <p class="match-info">Feb 28, 2026 - 20:45 IST</p>
             
-            <div class="countdown-row">
-                <div class="time-unit"><span id="days">00</span><p>Days</p></div>
-                <div class="time-unit"><span id="hours">00</span><p>Hours</p></div>
-                <div class="time-unit"><span id="mins">00</span><p>Mins</p></div>
+            <div class="countdown-grid">
+                <div class="time-box"><span id="days">00</span><p>Days</p></div>
+                <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
+                <div class="time-box"><span id="mins">00</span><p>Mins</p></div>
                 <div class="time-unit"><span id="secs">00</span><p>Secs</p></div>
             </div>
         </div>
@@ -45,56 +45,36 @@
     <main class="container">
         <section id="trophies" class="section">
             <h2 class="section-title">Major Honours</h2>
-            <div class="cabinet-grid">
-                <div class="trophy-card">
-                    <img src="https://www.stickpng.com/assets/images/584d9342367b6a13e54477ee.png" alt="Champions League">
-                    <p>5 Champions League</p>
-                </div>
-                <div class="trophy-card">
-                    <img src="https://www.pngmart.com/files/22/La-Liga-Trophy-PNG-Photos.png" alt="La Liga">
-                    <p>28 La Liga</p>
-                </div>
-                <div class="trophy-card">
-                    <img src="https://www.pngkey.com/png/full/240-2401614_copa-del-rey-trophy-png.png" alt="Copa del Rey">
-                    <p>32 Copa del Rey</p>
-                </div>
+            <div class="trophy-row">
+                <div class="trophy-item"><img src="https://www.stickpng.com/assets/images/584d9342367b6a13e54477ee.png" alt="UCL"><p>5 UCL</p></div>
+                <div class="trophy-item"><img src="https://www.pngmart.com/files/22/La-Liga-Trophy-PNG-Photos.png" alt="Liga"><p>28 Liga</p></div>
+                <div class="trophy-item"><img src="https://www.pngkey.com/png/full/240-2401614_copa-del-rey-trophy-png.png" alt="Copa"><p>32 Copa</p></div>
             </div>
 
-            <h2 class="section-title">Season History</h2>
+            <h2 class="section-title">Historical Stats</h2>
             <div class="table-wrapper">
                 <table class="stats-table">
-                    <thead>
-                        <tr>
-                            <th>Season</th>
-                            <th>Trophy Won</th>
-                            <th>Top Scorer</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Season</th><th>Trophy</th><th>Scorer</th></tr></thead>
                     <tbody>
                         <tr><td>2024-25</td><td>🏆 La Liga, 🏆 Copa del Rey</td><td>Lewandowski</td></tr>
-                        <tr><td>2023-24</td><td class="empty">Gone trophyless this season</td><td>Lewandowski</td></tr>
+                        <tr><td>2023-24</td><td class="trophyless">Gone trophyless this season</td><td>Lewandowski</td></tr>
                         <tr><td>2022-23</td><td>🏆 La Liga, 🏆 Super Cup</td><td>Lewandowski</td></tr>
-                        <tr><td>2021-22</td><td class="empty">Gone trophyless this season</td><td>Memphis Depay</td></tr>
+                        <tr><td>2021-22</td><td class="trophyless">Gone trophyless this season</td><td>Memphis Depay</td></tr>
                         <tr><td>2020-21</td><td>🏆 Copa del Rey</td><td>Lionel Messi</td></tr>
-                        <tr><td>2019-20</td><td class="empty">Gone trophyless this season</td><td>Lionel Messi</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>Visca el Barça! | Developed in IST Time &copy; 2026</p>
-    </footer>
+    <footer><p>Visca el Barça! | barca-site &copy; 2026</p></footer>
 
     <script>
         function updateTimer() {
             const matchDate = new Date('Feb 28, 2026 20:45:00').getTime();
             const now = new Date().getTime();
             const gap = matchDate - now;
-
             const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
-
             document.getElementById('days').innerText = Math.floor(gap / day).toString().padStart(2, '0');
             document.getElementById('hours').innerText = Math.floor((gap % day) / hour).toString().padStart(2, '0');
             document.getElementById('mins').innerText = Math.floor((gap % hour) / minute).toString().padStart(2, '0');
