@@ -1,0 +1,127 @@
+/* Official Barça Palette */
+:root {
+    --barca-blue: #004D98;
+    --barca-red: #A50044;
+    --barca-gold: #EDBB00;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: var(--barca-blue);
+    color: white;
+    padding: 1rem 5%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    border-bottom: 5px solid var(--barca-gold);
+}
+
+button {
+    background-color: var(--barca-red);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}/* Official Barça Palette */
+:root {
+    --barca-blue: #004D98;
+    --barca-red: #A50044;
+    --barca-gold: #EDBB00;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: var(--barca-blue);
+    color: white;
+    padding: 1rem 5%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    border-bottom: 5px solid var(--barca-gold);
+}
+
+button {
+    background-color: var(--barca-red);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
