@@ -26,15 +26,37 @@ header {
 .nav-links { display: flex; list-style: none; gap: 30px; }
 .nav-links a { color: white; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
-/* HERO SECTION - NIGHT ARRIVAL BACKGROUND */
+/* HERO SECTION - WITH SMOOTH ZOOM OUT ANIMATION */
 .hero {
+    position: relative;
     height: 100vh;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
+    overflow: hidden; 
+    z-index: 1; 
+}
+
+/* Background image layer for hardware-accelerated animation */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                 url('new-hero-bg.jpg');
     background-size: cover; 
     background-position: center; 
-    display: flex; align-items: center; justify-content: center; text-align: center;
+    z-index: -1; 
+    animation: bgZoomOut 3s ease-out forwards;
 }
+
+/* THE ANIMATION KEYFRAMES */
+@keyframes bgZoomOut {
+    0% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
 .hero-overlay { width: 100%; display: flex; justify-content: center; flex-direction: column; }
 .est-tag { color: var(--gold); font-weight: 900; letter-spacing: 6px; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 10px; }
 
@@ -128,7 +150,6 @@ footer { padding: 80px; text-align: center; opacity: 0.4; border-top: 1px solid 
 /* =========================================
    📱 MOBILE OPTIMIZATION (Media Queries)
 ========================================= */
-
 @media (max-width: 768px) {
     /* Header Stacking */
     .nav-container { flex-direction: column; gap: 10px; padding: 15px 5%; }
