@@ -1,6 +1,6 @@
 :root {
-    --bg: #010409;
-    --navy: #00122e;
+    --bg: #000c1a;
+    --navy: #001e3c;
     --blue: #004d98;
     --red: #a50044;
     --gold: #edbb00;
@@ -8,55 +8,57 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: #fff; line-height: 1.6; }
+body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
 
-/* NAV BAR */
-.main-nav { position: fixed; width: 100%; top: 0; z-index: 1000; background: rgba(1, 4, 9, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-.nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; padding: 20px; align-items: center; }
-.logo { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; }
-.gold { color: var(--gold); }
+/* HEADER & NAV */
+header { background: rgba(0, 12, 26, 0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.nav-container { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; }
+.logo { font-weight: 900; font-size: 1.5rem; color: var(--gold); }
 .nav-links { display: flex; list-style: none; gap: 30px; }
-.nav-links a { color: #fff; text-decoration: none; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
-.nav-links a:hover { color: var(--gold); }
+.nav-links a { color: white; text-decoration: none; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
 
-/* HERO */
-.hero-section { height: 90vh; background: url('https://www.fcbarcelona.com/fcbarcelona/photo/2024/07/11/shaping-the-future.jpg') center/cover no-repeat; display: flex; align-items: center; }
-.hero-overlay { width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.9), transparent); display: flex; align-items: center; padding: 0 8%; }
-.hero-text h1 { font-size: 4.5rem; font-weight: 900; line-height: 1.1; margin: 10px 0; }
-.pre-title { color: var(--gold); font-weight: bold; letter-spacing: 4px; }
-.cta-btn { display: inline-block; padding: 15px 35px; background: var(--red); color: white; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 20px; transition: 0.3s; }
-.cta-btn:hover { background: var(--blue); transform: translateY(-3px); }
-
-/* HORIZONTAL TIMER */
-.match-center { padding: 40px 8%; margin-top: -100px; }
-.timer-wrapper { background: linear-gradient(135deg, var(--navy), var(--blue)); border-radius: 24px; padding: 50px; text-align: center; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
-.match-tag { display: inline-block; padding: 5px 15px; background: rgba(255,255,255,0.1); border-radius: 5px; font-size: 0.7rem; font-weight: bold; margin-bottom: 15px; }
-.opponent { font-size: 2.2rem; font-weight: 900; margin-bottom: 5px; }
-.vs-circle { color: var(--gold); }
-
-.countdown-row { display: flex !important; flex-direction: row !important; justify-content: center; gap: 50px; margin-top: 30px; }
-.time-block span { font-size: 4rem; font-weight: 900; color: var(--gold) !important; display: block; line-height: 1; }
-.time-block small { text-transform: uppercase; opacity: 0.5; letter-spacing: 2px; font-size: 0.7rem; }
-
-/* TROPHY CARDS */
-.content-area { max-width: 1100px; margin: 0 auto; padding: 80px 20px; }
-.section-heading { font-size: 2.5rem; text-align: center; margin-bottom: 50px; }
-.trophy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-.trophy-card { background: rgba(255,255,255,0.03); padding: 40px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
-.trophy-card:hover { transform: translateY(-10px); border-color: var(--gold); }
-.trophy-card img { width: 120px; margin-bottom: 20px; filter: drop-shadow(0 10px 15px rgba(237,187,0,0.3)); }
-
-/* TABLE */
-.table-wrapper { background: rgba(255,255,255,0.02); border-radius: 20px; overflow: hidden; margin-top: 30px; }
-.pro-table { width: 100%; border-collapse: collapse; }
-.pro-table th { background: rgba(255,255,255,0.05); padding: 20px; text-align: left; color: var(--gold); }
-.pro-table td { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-.empty-season { color: #ff5f5f; font-style: italic; opacity: 0.7; }
-
-.pro-footer { padding: 50px; text-align: center; opacity: 0.5; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); }
-
-@media (max-width: 768px) {
-    .hero-text h1 { font-size: 3rem; }
-    .countdown-row { gap: 20px; }
-    .time-block span { font-size: 2.5rem; }
+/* HERO SECTION */
+.hero {
+    height: 85vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('https://www.fcbarcelona.com/fcbarcelona/photo/2024/07/11/shaping-the-future.jpg');
+    background-size: cover; background-position: center 20%;
+    display: flex; align-items: center; justify-content: center; text-align: center;
 }
+.hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; }
+.tagline { color: var(--gold); letter-spacing: 5px; font-weight: 800; }
+
+/* HORIZONTAL FORCED TIMER */
+.timer-section { padding: 0 8%; margin-top: -100px; }
+.timer-card {
+    background: linear-gradient(135deg, var(--blue), var(--red));
+    padding: 40px; border-radius: 20px; text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    max-width: 900px; margin: 0 auto;
+}
+.vs-text { color: var(--gold); }
+
+.countdown-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important; /* FORCES HORIZONTAL LINE */
+    gap: 15px;
+    margin-top: 25px;
+}
+.time-box span { font-size: clamp(2rem, 10vw, 4.5rem); font-weight: 900; color: var(--gold) !important; display: block; line-height: 1; }
+.time-box p { font-size: 0.7rem; text-transform: uppercase; opacity: 0.8; margin-top: 5px; }
+
+/* TROPHIES & TABLE */
+.container { padding: 100px 8%; }
+.section-title { font-size: 2.5rem; margin-bottom: 40px; border-left: 8px solid var(--gold); padding-left: 20px; }
+.trophy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 60px; }
+.trophy-card { background: var(--navy); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+.trophy-card img { width: 100%; height: 200px; object-fit: contain; filter: drop-shadow(0 0 10px rgba(237,187,0,0.4)); margin-bottom: 20px; background: rgba(0,0,0,0.2); border-radius: 10px; }
+.trophy-card h4 { color: var(--gold); font-weight: 900; }
+
+.trophyless { color: #ff4d4d; font-style: italic; font-weight: 700; opacity: 0.8; }
+.table-wrapper { background: var(--navy); border-radius: 20px; overflow-x: auto; }
+.pro-table { width: 100%; border-collapse: collapse; }
+.pro-table th { background: rgba(0,0,0,0.3); padding: 20px; text-align: left; color: var(--gold); }
+.pro-table td { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+footer { padding: 60px; text-align: center; opacity: 0.4; border-top: 1px solid rgba(255,255,255,0.1); }
