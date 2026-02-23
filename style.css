@@ -155,28 +155,39 @@ header {
 .pro-table td { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .trophyless { color: #ff5e5e; font-style: italic; opacity: 0.9; font-weight: bold; }
 
-/* BUTTON STYLES */
-.gold-btn {
-    display: inline-block;
-    background: var(--gold);
-    color: var(--bg); 
-    padding: 15px 35px;
-    font-size: 0.9rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 50px;
-    letter-spacing: 2px;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(237, 187, 0, 0.2);
-    border: 2px solid var(--gold);
+/* =========================================
+   HOMEPAGE ARCHIVE PORTAL
+========================================= */
+.archive-portal {
+    background: linear-gradient(to right, rgba(0, 12, 26, 0.95), rgba(0, 12, 26, 0.3)), 
+                url('zamora.jpg');
+    background-size: cover;
+    background-position: center 20%;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-left: 5px solid var(--gold);
+    border-radius: 20px;
+    padding: 50px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    transition: 0.3s;
 }
 
-.gold-btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(237, 187, 0, 0.4);
-    background: transparent;
-    color: var(--gold);
+.portal-content { 
+    max-width: 500px; 
+    text-align: left; 
+}
+.portal-content h3 { 
+    font-size: 2rem; 
+    font-weight: 900; 
+    margin-bottom: 10px; 
+    text-transform: uppercase; 
+    color: #fff;
+}
+.portal-content p { 
+    color: #ccc; 
+    line-height: 1.6; 
 }
 
 /* SQUAD & PLAYER CARDS (For 1922 Archive) */
@@ -229,13 +240,13 @@ footer { padding: 80px; text-align: center; opacity: 0.4; border-top: 1px solid 
    📱 MOBILE OPTIMIZATION (Media Queries)
 ========================================= */
 @media (max-width: 768px) {
-    /* 1. Background image shifted so players are centered */
+    /* Background image shifted so players are centered */
     .hero::before {
         background-position: 30% center; 
     }
 
-    /* 2. Slide-down Hamburger Menu */
-    .menu-toggle { display: flex; } /* Show hamburger icon */
+    /* Slide-down Hamburger Menu */
+    .menu-toggle { display: flex; } 
     
     .nav-links { 
         position: absolute; 
@@ -246,14 +257,14 @@ footer { padding: 80px; text-align: center; opacity: 0.4; border-top: 1px solid 
         flex-direction: column; 
         text-align: center; 
         padding: 0;
-        max-height: 0; /* Hidden initially */
+        max-height: 0; 
         overflow: hidden; 
         transition: max-height 0.4s ease-in-out; 
         border-bottom: 2px solid transparent;
     }
     
     .nav-links.active { 
-        max-height: 250px; /* Slides open */
+        max-height: 250px; 
         padding: 20px 0;
         border-bottom: 2px solid var(--gold);
     }
@@ -264,7 +275,7 @@ footer { padding: 80px; text-align: center; opacity: 0.4; border-top: 1px solid 
     .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
     .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    /* 3. Scale down text and grids for small screens */
+    /* Scale down text and grids for small screens */
     .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); letter-spacing: -1px; }
     .slogan-bottom { font-size: 0.9rem; letter-spacing: 4px; }
 
@@ -282,4 +293,8 @@ footer { padding: 80px; text-align: center; opacity: 0.4; border-top: 1px solid 
     .trophy-card img { height: 180px; }
 
     .pro-table th, .pro-table td { padding: 12px 10px; font-size: 0.8rem; }
+    
+    /* Shrink the padding on the new Archive Portal for phones */
+    .archive-portal { padding: 30px; background-position: right 20%; }
+    .portal-content h3 { font-size: 1.5rem; }
 }
