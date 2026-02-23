@@ -3,35 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1922 Squad Archive | Barça Site</title>
+    <title>1992 Dream Team | Barça Site</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* A custom hero banner specifically for this archive page */
-        .archive-hero { 
-            padding: 150px 8% 50px; 
-            text-align: center; 
-            border-bottom: 1px solid rgba(255,255,255,0.1); 
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('new-hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        .archive-hero h1 { 
-            font-size: clamp(2.5rem, 6vw, 4.5rem); 
-            font-weight: 900; 
-            background: linear-gradient(to right, #ccc, #fff); 
-            -webkit-background-clip: text; 
-            background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            letter-spacing: 2px;
-        }
-        .archive-hero p {
-            color: var(--gold);
-            font-weight: 800;
-            letter-spacing: 4px;
-            margin-top: 10px;
-            text-transform: uppercase;
-        }
+        .archive-hero { padding: 150px 8% 50px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('cruyff-bg.jpg'); background-size: cover; background-position: top center; }
+        .archive-hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; color: #fff; letter-spacing: 2px; }
+        .archive-hero p { color: var(--gold); font-weight: 800; letter-spacing: 4px; margin-top: 10px; text-transform: uppercase; }
+
+        .player-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 25px; margin-top: 30px; }
+        .player-card { background: rgba(255,255,255,0.03); border-radius: 15px; overflow: hidden; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; cursor: pointer; position: relative; }
+        .player-card:hover { transform: translateY(-8px); border-color: var(--gold); }
+        .player-card img { width: 100%; height: 250px; object-fit: cover; filter: grayscale(50%); transition: 0.3s; }
+        .player-card:hover img { filter: grayscale(0%); }
+        .player-card h4 { padding: 15px 10px; font-size: 1rem; color: #fff; font-weight: 900; }
+
+        /* MODAL STYLES */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
+        .modal.show { display: flex; opacity: 1; }
+        .modal-content { background: linear-gradient(135deg, var(--navy), var(--blue)); border: 2px solid var(--gold); border-radius: 20px; padding: 40px; max-width: 500px; width: 90%; text-align: center; transform: scale(0.8); transition: 0.3s; }
+        .modal.show .modal-content { transform: scale(1); }
+        .close-btn { position: absolute; top: 15px; right: 20px; color: #fff; font-size: 2rem; cursor: pointer; }
+        #modal-img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid var(--gold); margin-bottom: 20px; object-fit: cover; }
     </style>
 </head>
 <body>
@@ -39,126 +32,58 @@
     <header>
         <nav class="nav-container">
             <div class="logo">BARÇA<span class="gold">SITE</span></div>
-            
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-
-            <ul class="nav-links" id="nav-links">
-                <li><a href="index.html">🔙 Back to Home</a></li>
-            </ul>
+            <ul class="nav-links"><li><a href="ucl.html">🔙 Back to History</a></li></ul>
         </nav>
     </header>
 
     <section class="archive-hero">
-        <h1>1922 SQUAD</h1>
-        <p>The Historical Archive</p>
+        <h1>THE DREAM TEAM</h1>
+        <p>1992 WEMBLEY LEGENDS</p>
     </section>
 
-    <main class="container" style="padding-top: 50px;">
-        <section class="squad-section">
-            
-            <div class="squad-category">
-                <h3>Goalkeepers</h3>
-                <div class="player-grid">
-                    <div class="player-card">
-                        <img src="zamora.jpg" alt="Ricardo Zamora" onerror="this.src='https://via.placeholder.com/200x250/111/edbb00?text=Barça'">
-                        <h4>Ricardo Zamora</h4>
-                    </div>
-                    <div class="player-card">
-                        <img src="uriach.jpg" alt="Jaime Uriach" onerror="this.src='https://via.placeholder.com/200x250/111/edbb00?text=Barça'">
-                        <h4>Jaime Uriach</h4>
-                    </div>
-                </div>
+    <main class="container">
+        <h2 class="section-title">Click a player for facts</h2>
+        <div class="player-grid">
+            <div class="player-card" data-name="Ronald Koeman" data-fact="The Hero of Wembley. His thunderous free-kick in the 112th minute secured Barça's first European Cup." data-img="koeman.jpg">
+                <img src="koeman.jpg" alt="Koeman" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
+                <h4>4. Ronald Koeman</h4>
             </div>
-
-            <div class="squad-category">
-                <h3>Defenders</h3>
-                <div class="player-grid">
-                    <div class="player-card">
-                        <img src="planas.jpg" alt="José Planas" onerror="this.src='https://via.placeholder.com/200x250/111/edbb00?text=Barça'">
-                        <h4>José Planas</h4>
-                    </div>
-                    <div class="player-card">
-                        <img src="surroca.jpg" alt="Salvador Surroca" onerror="this.src='https://via.placeholder.com/200x250/111/edbb00?text=Barça'">
-                        <h4>Salvador Surroca</h4>
-                    </div>
-                    <div class="player-card">
-                        <img src="coma.jpg" alt="Francesc Coma" onerror="this.src='https://via.placeholder.com/200x250/111/edbb00?text=Barça'">
-                        <h4>Francesc Coma</h4>
-                    </div>
-                    <div class="player-card">
-                        <img src="bosch.jpg" alt="Andreu Bosch" onerror="this.src='https://via.placeholder.com/200x250/111/edbb00?text=Barça'">
-                        <h4>Andreu Bosch</h4>
-                    </div>
-                </div>
+            <div class="player-card" data-name="Pep Guardiola" data-fact="The midfield anchor of the Dream Team. Cruyff plucked him from the youth academy to run the show at just 21." data-img="guardiola.jpg">
+                <img src="guardiola.jpg" alt="Guardiola" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
+                <h4>10. Pep Guardiola</h4>
             </div>
-
-            <div class="squad-category">
-                <h3>Midfielders</h3>
-                <div class="player-grid">
-                    <div class="player-card">
-                        <img src="torralba.jpg" alt="Ramón Torralba" onerror="this.src='https://via.placeholder.com/200x250/111/edbb00?text=Barça'">
-                        <h4>Ramón Torralba</h4>
-                    </div>
-                    <div class="player-card">
-                        <img src="sancho.jpg" alt="Agustín Sancho" onerror="this.src='https://via.placeholder.com/200x250/111/edbb00?text=Barça'">
-                        <h4>Agustín Sancho</h4>
-                    </div>
-                    <div class="player-card">
-                        <img src="samitier.jpg" alt="Josep Samitier" onerror="this.src='https://via.placeholder.com/200x250/111/edbb00?text=Barça'">
-                        <h4>Josep Samitier</h4>
-                    </div>
-                    <div class="player-card">
-                        <img src="carulla.jpg" alt="Domènec Carulla" onerror="this.src='https://via.placeholder.com/200x250/111/edbb00?text=Barça'">
-                        <h4>Domènec Carulla</h4>
-                    </div>
-                </div>
+            <div class="player-card" data-name="Hristo Stoichkov" data-fact="The Bulgarian 'Gunslinger'. A Ballon d'Or winner known for his incredible left foot and fiery passion." data-img="stoichkov.jpg">
+                <img src="stoichkov.jpg" alt="Stoichkov" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
+                <h4>8. Hristo Stoichkov</h4>
             </div>
-
-            <div class="squad-category">
-                <h3>Forwards</h3>
-                <div class="player-grid">
-                    <div class="player-card">
-                        <img src="alcantara.jpg" alt="Paulino Alcántara" onerror="this.src='https://via.placeholder.com/200x250/111/edbb00?text=Barça'">
-                        <h4>Paulino Alcántara</h4>
-                    </div>
-                    <div class="player-card">
-                        <img src="gracia.jpg" alt="Clemente Gràcia" onerror="this.src='https://via.placeholder.com/200x250/111/edbb00?text=Barça'">
-                        <h4>Clemente Gràcia</h4>
-                    </div>
-                    <div class="player-card">
-                        <img src="sagi-barba.jpg" alt="Emili Sagi-Barba" onerror="this.src='https://via.placeholder.com/200x250/111/edbb00?text=Barça'">
-                        <h4>Emili Sagi-Barba</h4>
-                    </div>
-                    <div class="player-card">
-                        <img src="piera.jpg" alt="Vicenç Piera" onerror="this.src='https://via.placeholder.com/200x250/111/edbb00?text=Barça'">
-                        <h4>Vicenç Piera</h4>
-                    </div>
-                    <div class="player-card">
-                        <img src="vinyals.jpg" alt="Francesc Vinyals" onerror="this.src='https://via.placeholder.com/200x250/111/edbb00?text=Barça'">
-                        <h4>Francesc Vinyals</h4>
-                    </div>
-                </div>
-            </div>
-
-        </section>
+        </div>
     </main>
 
-    <footer>
-        <p>Visca el Barça! | barca-site &copy; 2026</p>
-    </footer>
+    <div id="playerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img id="modal-img" src="">
+            <h2 id="modal-name" style="margin-bottom:10px;"></h2>
+            <p id="modal-fact" style="color:#ccc; line-height:1.6;"></p>
+        </div>
+    </div>
 
     <script>
-        const menuToggle = document.querySelector('#mobile-menu');
-        const navLinks = document.querySelector('#nav-links');
+        const modal = document.getElementById('playerModal');
+        const closeBtn = document.querySelector('.close-btn');
+        const cards = document.querySelectorAll('.player-card');
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active'); 
-            menuToggle.classList.toggle('is-active');
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                document.getElementById('modal-name').innerText = card.dataset.name;
+                document.getElementById('modal-fact').innerText = card.dataset.fact;
+                document.getElementById('modal-img').src = card.dataset.img;
+                modal.classList.add('show');
+            });
         });
+
+        closeBtn.onclick = () => modal.classList.remove('show');
+        window.onclick = (e) => { if(e.target == modal) modal.classList.remove('show'); }
     </script>
 </body>
 </html>
