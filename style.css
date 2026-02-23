@@ -59,7 +59,15 @@ header {
     100% { transform: scale(1); }
 }
 
-.hero-overlay { width: 100%; display: flex; justify-content: center; flex-direction: column; }
+/* THE YELLOW LINE FIX */
+.hero-overlay { 
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; /* This prevents the border from stretching to the edges */
+    flex-direction: column; 
+}
+
 .est-tag { color: var(--gold); font-weight: 900; letter-spacing: 6px; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 10px; }
 
 /* BLAUGRANA GRADIENT TEXT */
