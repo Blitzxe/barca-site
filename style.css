@@ -1,8 +1,8 @@
 :root {
     --bg: #000c1a;
     --navy: #001e3c;
-    --blue: #004d98;
-    --red: #a50044;
+    --blue: #004d98; /* Blaugrana Blue */
+    --red: #a50044;  /* Blaugrana Red */
     --gold: #edbb00;
 }
 
@@ -26,20 +26,34 @@ header {
 .nav-links { display: flex; list-style: none; gap: 30px; }
 .nav-links a { color: white; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
-/* HERO SECTION - NEW LOCAL 2025/26 KIT BACKGROUND */
+/* HERO SECTION - NEW NIGHT ARRIVAL BACKGROUND */
 .hero {
     height: 100vh;
-    /* Uses the local image file and keeps the dark overlay for text readability */
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                url('hero-bg.jpg');
+    /* Kept a dark overlay for contrast. Make sure your new image is saved as 'new-hero-bg.jpg' */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('new-hero-bg.jpg');
     background-size: cover; 
-    background-position: center top;
+    background-position: center; /* Changed to 'center' for better framing of the new photo */
     display: flex; align-items: center; justify-content: center; text-align: center;
 }
-.hero-overlay { width: 100%; display: flex; justify-content: center; }
-.est-tag { color: var(--gold); font-weight: 900; letter-spacing: 6px; font-size: 0.9rem; text-transform: uppercase; }
-.hero h1 { font-size: clamp(3rem, 10vw, 7rem); font-weight: 900; margin: 15px 0; color: #fff; letter-spacing: -2px; }
-.slogan-bottom { font-size: 1.2rem; font-weight: 700; letter-spacing: 8px; color: #fff; border-top: 2px solid var(--gold); display: inline-block; padding-top: 15px; text-transform: uppercase; }
+.hero-overlay { width: 100%; display: flex; justify-content: center; flex-direction: column; }
+.est-tag { color: var(--gold); font-weight: 900; letter-spacing: 6px; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 10px; }
+
+/* BLAUGRANA GRADIENT TEXT */
+.hero h1 { 
+    font-size: clamp(3rem, 10vw, 7rem); 
+    font-weight: 900; 
+    margin: 5px 0; 
+    letter-spacing: -2px;
+    /* This creates the Blaugrana gradient effect */
+    background: linear-gradient(to right, var(--blue), var(--red));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Added a subtle text shadow to make it pop against the dark background */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+.slogan-bottom { font-size: 1.2rem; font-weight: 700; letter-spacing: 8px; color: #fff; border-top: 2px solid var(--gold); display: inline-block; padding-top: 15px; text-transform: uppercase; margin-top: 15px; }
 
 /* FORCED HORIZONTAL GRID TIMER */
 .timer-section { padding: 0 8%; margin-top: -100px; position: relative; z-index: 10; }
@@ -57,7 +71,6 @@ header {
 .match-title { font-size: 2.2rem; font-weight: 900; margin-bottom: 5px; }
 .gold-text { color: var(--gold); }
 
-/* The fix that forces it to stay in one line */
 .countdown-grid { 
     display: grid !important; 
     grid-template-columns: repeat(4, 1fr) !important; 
@@ -76,7 +89,7 @@ header {
 .trophy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
 .trophy-card { background: rgba(255,255,255,0.02); padding: 40px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
 
-/* PHOTO FRAME FIX - Ensures all trophies are perfectly aligned */
+/* PHOTO FRAME FIX */
 .trophy-card img {
     width: 100%;
     height: 250px;
