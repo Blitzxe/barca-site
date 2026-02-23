@@ -10,7 +10,7 @@
 html { scroll-behavior: smooth; }
 body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
 
-/* NAV BAR */
+/* NAV BAR & HAMBURGER BASE */
 header { 
     background: rgba(0, 12, 26, 0.95); 
     backdrop-filter: blur(10px); 
@@ -20,13 +20,17 @@ header {
     z-index: 1000; 
     border-bottom: 1px solid rgba(255,255,255,0.1); 
 }
-.nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; }
-.logo { font-weight: 900; font-size: 1.6rem; color: #fff; text-transform: uppercase; }
+.nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; position: relative; }
+.logo { font-weight: 900; font-size: 1.6rem; color: #fff; text-transform: uppercase; z-index: 1002; }
 .gold { color: var(--gold); }
 .nav-links { display: flex; list-style: none; gap: 30px; }
 .nav-links a { color: white; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
-/* HERO SECTION - WITH SMOOTH ZOOM OUT ANIMATION */
+/* Hide hamburger on desktop */
+.menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; z-index: 1002; }
+.bar { width: 25px; height: 3px; background-color: white; transition: 0.3s; border-radius: 3px; }
+
+/* HERO SECTION & ZOOM ANIMATION */
 .hero {
     position: relative;
     height: 100vh;
@@ -38,7 +42,6 @@ header {
     z-index: 1; 
 }
 
-/* Background image layer for hardware-accelerated animation */
 .hero::before {
     content: "";
     position: absolute;
@@ -51,7 +54,6 @@ header {
     animation: bgZoomOut 3s ease-out forwards;
 }
 
-/* THE ANIMATION KEYFRAMES */
 @keyframes bgZoomOut {
     0% { transform: scale(1.15); }
     100% { transform: scale(1); }
@@ -74,7 +76,7 @@ header {
 }
 .slogan-bottom { font-size: 1.2rem; font-weight: 700; letter-spacing: 8px; color: #fff; border-top: 2px solid var(--gold); display: inline-block; padding-top: 15px; text-transform: uppercase; margin-top: 15px; }
 
-/* HORIZONTAL GRID TIMER */
+/* MATCH TIMER */
 .timer-section { padding: 0 8%; margin-top: -100px; position: relative; z-index: 10; }
 .timer-card { 
     background: linear-gradient(135deg, var(--navy), var(--blue)); 
@@ -151,16 +153,45 @@ footer { padding: 80px; text-align: center; opacity: 0.4; border-top: 1px solid 
    📱 MOBILE OPTIMIZATION (Media Queries)
 ========================================= */
 @media (max-width: 768px) {
-    /* Header Stacking */
-    .nav-container { flex-direction: column; gap: 10px; padding: 15px 5%; }
-    .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
-    .nav-links a { font-size: 0.75rem; }
+    /* 1. Background image shifted so players are centered */
+    .hero::before {
+        background-position: 30% center; 
+    }
 
-    /* Hero Text Adjustments */
+    /* 2. Slide-down Hamburger Menu */
+    .menu-toggle { display: flex; } /* Show hamburger icon */
+    
+    .nav-links { 
+        position: absolute; 
+        top: 100%; 
+        left: 0;
+        width: 100%; 
+        background: rgba(0, 12, 26, 0.98); 
+        flex-direction: column; 
+        text-align: center; 
+        padding: 0;
+        max-height: 0; /* Hidden initially */
+        overflow: hidden; 
+        transition: max-height 0.4s ease-in-out; 
+        border-bottom: 2px solid transparent;
+    }
+    
+    .nav-links.active { 
+        max-height: 250px; /* Slides open */
+        padding: 20px 0;
+        border-bottom: 2px solid var(--gold);
+    }
+    .nav-links li { margin: 15px 0; }
+    
+    /* Turn Hamburger into 'X' when open */
+    .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* 3. Scale down text and grids for small screens */
     .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); letter-spacing: -1px; }
     .slogan-bottom { font-size: 0.9rem; letter-spacing: 4px; }
 
-    /* Horizontal Timer Fit */
     .timer-section { margin-top: -60px; padding: 0 5%; }
     .timer-card { padding: 30px 15px; border-radius: 20px; }
     .match-title { font-size: 1.6rem; }
@@ -168,13 +199,11 @@ footer { padding: 80px; text-align: center; opacity: 0.4; border-top: 1px solid 
     .time-box span { font-size: clamp(1.8rem, 6vw, 2.5rem) !important; }
     .time-box p { font-size: 0.6rem; margin-top: 5px; }
 
-    /* Layout Spacing & Trophies */
     .container { padding: 60px 5%; }
     .section-title { font-size: 1.8rem; margin-bottom: 30px; }
     .trophy-grid { gap: 20px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
     .trophy-card { padding: 25px; }
     .trophy-card img { height: 180px; }
 
-    /* Table Fix */
     .pro-table th, .pro-table td { padding: 12px 10px; font-size: 0.8rem; }
 }
