@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* NEW HERO SECTION WITH 5 UCL BACKGROUND */
         .ucl-hero { 
             padding: 150px 8% 50px; 
             text-align: center; 
@@ -23,10 +22,8 @@
             -webkit-background-clip: text; 
             background-clip: text; 
             -webkit-text-fill-color: transparent; 
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
         
-        /* HISTORY CARD WITH CRUYFF BACKGROUND */
         .history-card { 
             background: linear-gradient(to right, rgba(0, 12, 26, 0.95), rgba(0, 12, 26, 0.7)), 
                         url('cruyff-bg.jpg');
@@ -60,13 +57,9 @@
     <header>
         <nav class="nav-container">
             <div class="logo">BARÇA<span class="gold">SITE</span></div>
-            
             <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </div>
-
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">🔙 Back to Home</a></li>
             </ul>
@@ -79,7 +72,6 @@
     </section>
 
     <main class="container" style="padding-top: 0;">
-        
         <div class="history-card">
             <div class="match-info">
                 <div class="year-badge">1992</div>
@@ -88,32 +80,28 @@
                 <p><strong>📍 Location:</strong> Wembley Stadium, London</p>
                 <p><strong>👔 Manager:</strong> Johan Cruyff</p>
                 <p><strong>⚽ Goalscorer:</strong> Ronald Koeman (112')</p>
-                <p><strong>📖 The Moment:</strong> The night the modern FC Barcelona was born. Johan Cruyff's Dream Team finally lifted "Old Big Ears" thanks to a blistering extra-time free-kick from Ronald Koeman, validating the club's entire footballing philosophy.</p>
+                <p><strong>📖 The Moment:</strong> The night the modern FC Barcelona was born. Johan Cruyff's Dream Team finally lifted "Old Big Ears" thanks to a blistering extra-time free-kick from Ronald Koeman.</p>
             </div>
             
             <div class="lineup">
                 <h4>Starting XI</h4>
                 <ul>
-                    <li>1. Andoni Zubizarreta (C)</li>
-                    <li>2. Nando</li>
-                    <li>3. Albert Ferrer</li>
+                    <li>1. Zubizarreta (C)</li>
+                    <li>2. Nando | 3. Ferrer</li>
                     <li>4. Ronald Koeman ⚽</li>
-                    <li>5. Juan Carlos</li>
-                    <li>6. José Mari Bakero</li>
-                    <li>7. Julio Salinas</li>
-                    <li>8. Hristo Stoichkov</li>
-                    <li>9. Michael Laudrup</li>
-                    <li>10. Pep Guardiola</li>
+                    <li>5. Juan Carlos | 6. Bakero</li>
+                    <li>7. Salinas | 8. Stoichkov</li>
+                    <li>9. Laudrup | 10. Guardiola</li>
                     <li>11. Eusebio Sacristán</li>
                 </ul>
+                <div style="margin-top: 25px; text-align: center;">
+                    <a href="1992.html" class="gold-btn" style="padding: 10px 20px; font-size: 0.8rem;">View Interactive Squad ➔</a>
+                </div>
             </div>
         </div>
-        
     </main>
 
-    <footer>
-        <p>Visca el Barça! | barca-site &copy; 2026</p>
-    </footer>
+    <footer><p>Visca el Barça! | barca-site &copy; 2026</p></footer>
 
     <script>
         const menuToggle = document.querySelector('#mobile-menu');
