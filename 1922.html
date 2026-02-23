@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1992 Dream Team | Barça Site</title>
+    <title>1922 Squad Archive | Barça Site</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        .archive-hero { padding: 150px 8% 50px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('cruyff-bg.jpg'); background-size: cover; background-position: top center; }
+        .archive-hero { 
+            padding: 150px 8% 50px; 
+            text-align: center; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('cruyff-bg.jpg'); 
+            background-size: cover; 
+            background-position: top center; 
+        }
         .archive-hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; color: #fff; letter-spacing: 2px; }
         .archive-hero p { color: var(--gold); font-weight: 800; letter-spacing: 4px; margin-top: 10px; text-transform: uppercase; }
 
         .player-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 25px; margin-top: 30px; }
-        .player-card { background: rgba(255,255,255,0.03); border-radius: 15px; overflow: hidden; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; cursor: pointer; position: relative; }
-        .player-card:hover { transform: translateY(-8px); border-color: var(--gold); }
+        .player-card { background: rgba(255,255,255,0.03); border-radius: 15px; overflow: hidden; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; cursor: pointer; }
+        .player-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 15px 30px rgba(237, 187, 0, 0.2); }
         .player-card img { width: 100%; height: 250px; object-fit: cover; filter: grayscale(50%); transition: 0.3s; }
         .player-card:hover img { filter: grayscale(0%); }
         .player-card h4 { padding: 15px 10px; font-size: 1rem; color: #fff; font-weight: 900; }
 
-        /* MODAL STYLES */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
         .modal.show { display: flex; opacity: 1; }
-        .modal-content { background: linear-gradient(135deg, var(--navy), var(--blue)); border: 2px solid var(--gold); border-radius: 20px; padding: 40px; max-width: 500px; width: 90%; text-align: center; transform: scale(0.8); transition: 0.3s; }
-        .modal.show .modal-content { transform: scale(1); }
+        .modal-content { background: linear-gradient(135deg, var(--navy), var(--blue)); border: 2px solid var(--gold); border-radius: 20px; padding: 40px; max-width: 500px; width: 90%; text-align: center; position: relative; }
         .close-btn { position: absolute; top: 15px; right: 20px; color: #fff; font-size: 2rem; cursor: pointer; }
         #modal-img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid var(--gold); margin-bottom: 20px; object-fit: cover; }
     </style>
@@ -44,29 +49,32 @@
     <main class="container">
         <h2 class="section-title">Click a player for facts</h2>
         <div class="player-grid">
-            <div class="player-card" data-name="Ronald Koeman" data-fact="The Hero of Wembley. His thunderous free-kick in the 112th minute secured Barça's first European Cup." data-img="koeman.jpg">
+            <div class="player-card" data-name="Andoni Zubizarreta" data-birth="Vitoria-Gasteiz, Spain" data-fact="The legendary captain and goalkeeper. He played over 400 matches for Barça and was known for his incredible positioning and leadership at the back." data-img="zubi.jpg">
+                <img src="zubi.jpg" alt="Zubizarreta" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
+                <h4>1. Zubizarreta (C)</h4>
+            </div>
+            <div class="player-card" data-name="Ronald Koeman" data-birth="Zaandam, Netherlands" data-fact="The Hero of Wembley. His thunderous free-kick in the 112th minute secured Barça's first European Cup. He remains the highest-scoring defender in history." data-img="koeman.jpg">
                 <img src="koeman.jpg" alt="Koeman" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
                 <h4>4. Ronald Koeman</h4>
             </div>
-            <div class="player-card" data-name="Pep Guardiola" data-fact="The midfield anchor of the Dream Team. Cruyff plucked him from the youth academy to run the show at just 21." data-img="guardiola.jpg">
+            <div class="player-card" data-name="Pep Guardiola" data-birth="Santpedor, Spain" data-fact="The midfield anchor. Johan Cruyff pulled him from the youth team to run the midfield at just 21 years old. He went on to become the club's greatest manager." data-img="guardiola.jpg">
                 <img src="guardiola.jpg" alt="Guardiola" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
                 <h4>10. Pep Guardiola</h4>
             </div>
-            <div class="player-card" data-name="Hristo Stoichkov" data-fact="The Bulgarian 'Gunslinger'. A Ballon d'Or winner known for his incredible left foot and fiery passion." data-img="stoichkov.jpg">
-                <img src="stoichkov.jpg" alt="Stoichkov" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
-                <h4>8. Hristo Stoichkov</h4>
             </div>
-        </div>
     </main>
 
     <div id="playerModal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <img id="modal-img" src="">
-            <h2 id="modal-name" style="margin-bottom:10px;"></h2>
+            <h2 id="modal-name" style="margin-bottom:5px;"></h2>
+            <p id="modal-birth" style="color:var(--gold); font-weight:bold; margin-bottom:15px; font-size:0.9rem; text-transform:uppercase;"></p>
             <p id="modal-fact" style="color:#ccc; line-height:1.6;"></p>
         </div>
     </div>
+
+    <footer><p>Visca el Barça! | barca-site &copy; 2026</p></footer>
 
     <script>
         const modal = document.getElementById('playerModal');
@@ -76,6 +84,7 @@
         cards.forEach(card => {
             card.addEventListener('click', () => {
                 document.getElementById('modal-name').innerText = card.dataset.name;
+                document.getElementById('modal-birth').innerText = "Born: " + card.dataset.birth;
                 document.getElementById('modal-fact').innerText = card.dataset.fact;
                 document.getElementById('modal-img').src = card.dataset.img;
                 modal.classList.add('show');
