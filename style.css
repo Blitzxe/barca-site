@@ -64,7 +64,7 @@ header {
     width: 100%; 
     display: flex; 
     justify-content: center; 
-    align-items: center; /* This prevents the border from stretching to the edges */
+    align-items: center; 
     flex-direction: column; 
 }
 
@@ -154,6 +154,74 @@ header {
 .pro-table th { background: rgba(255,255,255,0.05); padding: 20px; text-align: left; color: var(--gold); }
 .pro-table td { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .trophyless { color: #ff5e5e; font-style: italic; opacity: 0.9; font-weight: bold; }
+
+/* BUTTON STYLES */
+.gold-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--bg); 
+    padding: 15px 35px;
+    font-size: 0.9rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 50px;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(237, 187, 0, 0.2);
+    border: 2px solid var(--gold);
+}
+
+.gold-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(237, 187, 0, 0.4);
+    background: transparent;
+    color: var(--gold);
+}
+
+/* SQUAD & PLAYER CARDS (For 1922 Archive) */
+.squad-section { padding: 50px 8%; }
+.squad-category { margin-bottom: 50px; }
+.squad-category h3 { 
+    color: var(--gold); 
+    border-bottom: 1px solid rgba(255,255,255,0.1); 
+    padding-bottom: 10px; 
+    margin-bottom: 25px; 
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.player-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+    gap: 20px; 
+}
+.player-card { 
+    background: rgba(255,255,255,0.03); 
+    border-radius: 12px; 
+    overflow: hidden; 
+    text-align: center; 
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
+}
+.player-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+.player-card img { 
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover; 
+    background: #111; 
+    filter: sepia(30%) grayscale(80%) contrast(120%); 
+}
+.player-card h4 { 
+    padding: 15px 10px; 
+    font-size: 0.9rem; 
+    color: #fff; 
+    font-weight: 700;
+}
 
 footer { padding: 80px; text-align: center; opacity: 0.4; border-top: 1px solid rgba(255,255,255,0.1); }
 
