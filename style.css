@@ -1,6 +1,6 @@
 :root {
-    --bg: #010409;
-    --navy: #00122e;
+    --bg: #000c1a;
+    --navy: #001e3c;
     --blue: #004d98;
     --red: #a50044;
     --gold: #edbb00;
@@ -8,64 +8,61 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: #fff; overflow-x: hidden; }
+body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
 
 /* NAV BAR */
-header { position: fixed; width: 100%; top: 0; z-index: 1000; background: rgba(1, 4, 9, 0.85); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-.nav-container { display: flex; justify-content: space-between; align-items: center; padding: 18px 8%; }
-.logo { font-weight: 900; font-size: 1.5rem; color: #fff; }
+header { background: rgba(0, 12, 26, 0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; }
+.logo { font-weight: 900; font-size: 1.6rem; color: #fff; }
 .gold { color: var(--gold); }
 .nav-links { display: flex; list-style: none; gap: 30px; }
-.nav-links a { color: #fff; text-decoration: none; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+.nav-links a { color: white; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
-/* HERO SECTION - USING SQUAD IMAGE */
+/* HERO SECTION */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://www.fcbarcelona.com/fcbarcelona/photo/2024/07/11/shaping-the-future.jpg');
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://www.fcbarcelona.com/fcbarcelona/photo/2024/07/11/shaping-the-future.jpg');
     background-size: cover; background-position: center top;
     display: flex; align-items: center; justify-content: center; text-align: center;
 }
-.est-tag { color: var(--gold); font-weight: 800; letter-spacing: 6px; font-size: 0.9rem; }
-.hero h1 { font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; margin: 10px 0; letter-spacing: -2px; }
-.slogan-bottom { font-size: 1.2rem; font-weight: 700; letter-spacing: 8px; color: #fff; opacity: 0.9; margin-top: 20px; border-top: 2px solid var(--gold); display: inline-block; padding-top: 10px; }
+.est-tag { color: var(--gold); font-weight: 800; letter-spacing: 5px; font-size: 0.9rem; }
+.hero h1 { font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 900; margin: 10px 0; }
+.slogan-bottom { font-size: 1.1rem; font-weight: 700; letter-spacing: 6px; border-top: 2px solid var(--gold); padding-top: 10px; display: inline-block; }
 
-/* HORIZONTAL TIMER CENTER */
-.match-center { padding: 0 8%; margin-top: -120px; position: relative; z-index: 10; }
-.timer-card { background: linear-gradient(135deg, var(--navy), var(--blue)); border-radius: 30px; padding: 50px; text-align: center; box-shadow: 0 30px 60px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); }
-.match-status { font-size: 0.7rem; font-weight: 900; letter-spacing: 3px; color: var(--gold); margin-bottom: 10px; }
-.match-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 5px; }
+/* FORCED HORIZONTAL GRID TIMER */
+.timer-section { padding: 0 8%; margin-top: -120px; position: relative; z-index: 10; }
+.timer-card { background: linear-gradient(135deg, var(--navy), var(--blue)); padding: 40px; border-radius: 30px; text-align: center; box-shadow: 0 30px 60px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); }
+.match-status { font-size: 0.7rem; font-weight: 900; color: var(--gold); letter-spacing: 3px; margin-bottom: 10px; }
+.gold-text { color: var(--gold); }
 
-/* THE HORIZONTAL FIX */
-.countdown-container {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center;
-    gap: 50px;
-    margin-top: 35px;
+.countdown-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 15px; margin-top: 30px; max-width: 700px; margin-left: auto; margin-right: auto; }
+.time-box span { font-size: clamp(2rem, 8vw, 4.5rem); font-weight: 900; color: var(--gold) !important; display: block; line-height: 1; }
+.time-box p { font-size: 0.7rem; text-transform: uppercase; opacity: 0.7; margin-top: 5px; font-weight: 700; }
+
+/* TROPHY CARDS */
+.container { padding: 120px 8%; }
+.section-title { font-size: 2.2rem; margin-bottom: 50px; border-left: 8px solid var(--gold); padding-left: 20px; font-weight: 900; }
+.trophy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.trophy-card { background: rgba(255,255,255,0.02); padding: 40px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
+
+/* PHOTO FRAME FIX */
+.trophy-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain; /* Prevents stretching */
+    margin-bottom: 25px;
+    filter: drop-shadow(0 15px 15px rgba(0,0,0,0.5));
+    background: rgba(0,0,0,0.2); /* Dark placeholder background */
+    border-radius: 15px;
 }
-.time-block span { font-size: 4.5rem; font-weight: 900; color: var(--gold) !important; display: block; line-height: 1; }
-.time-block small { text-transform: uppercase; font-size: 0.7rem; font-weight: 700; opacity: 0.6; letter-spacing: 2px; }
-
-/* TROPHY CABINET */
-.container { padding: 100px 8%; }
-.section-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 50px; border-left: 8px solid var(--gold); padding-left: 20px; }
-.trophy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px; }
-.trophy-card { background: rgba(255,255,255,0.02); padding: 40px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; }
-.trophy-card:hover { transform: translateY(-10px); border-color: var(--gold); }
-.trophy-card img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 25px; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.5)); border-radius: 15px; }
-.trophy-card h4 { font-size: 1.2rem; font-weight: 900; color: var(--gold); }
+.trophy-card h4 { color: var(--gold); font-weight: 900; font-size: 1.1rem; }
 
 /* TABLE */
-.table-wrapper { background: rgba(255,255,255,0.02); border-radius: 20px; overflow: hidden; margin-top: 30px; }
+.table-wrapper { background: rgba(255,255,255,0.02); border-radius: 20px; overflow-x: auto; margin-top: 30px; }
 .pro-table { width: 100%; border-collapse: collapse; }
-.pro-table th { background: rgba(255,255,255,0.05); padding: 22px; text-align: left; color: var(--gold); font-size: 0.9rem; }
-.pro-table td { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.9rem; }
+.pro-table th { background: rgba(255,255,255,0.05); padding: 20px; text-align: left; color: var(--gold); }
+.pro-table td { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .trophyless { color: #ff5e5e; font-style: italic; opacity: 0.8; }
 
-footer { padding: 80px; text-align: center; opacity: 0.4; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); }
-
-@media (max-width: 768px) {
-    .countdown-container { gap: 15px; }
-    .time-block span { font-size: 2.5rem; }
-    .hero h1 { font-size: 3rem; }
-}
+footer { padding: 80px; text-align: center; opacity: 0.4; border-top: 1px solid rgba(255,255,255,0.1); }
