@@ -1,63 +1,97 @@
 :root {
-    --bg: #000c1a;
-    --navy: #001e3c;
-    --blue: #004d98;
-    --red: #a50044;
     --gold: #edbb00;
+    --glass: rgba(255, 255, 255, 0.05);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
 
-/* HERO SQUAD IMAGE */
-.hero {
-    height: 80vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0a0a0a;
+    color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* 1. BLURRED BACKGROUND */
+.bg-blur {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                 url('https://www.fcbarcelona.com/fcbarcelona/photo/2024/07/11/shaping-the-future.jpg');
-    background-size: cover; background-position: center 20%;
-    display: flex; align-items: center; justify-content: center; text-align: center;
-}
-.hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; }
-.tagline { color: var(--gold); letter-spacing: 5px; font-weight: 800; }
-
-/* HORIZONTAL TIMER */
-.timer-section { padding: 0 5%; margin-top: -80px; }
-.timer-card {
-    background: linear-gradient(135deg, var(--blue), var(--red));
-    padding: 30px; border-radius: 20px; text-align: center;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-    max-width: 900px; margin: 0 auto;
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px); /* This gives that premium look */
+    z-index: -1;
 }
 
-/* THE FORCE HORIZONTAL FIX */
-.countdown-horizontal-container {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important; /* FORCES 4 COLUMNS SIDE-BY-SIDE */
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto 0 auto;
-    gap: 10px;
+/* 2. THE FLOATING GLASS CARD */
+.glass-wrapper {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    width: 90%;
+    max-width: 900px;
+    padding: 60px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    box-shadow: 0 50px 100px rgba(0,0,0,0.5);
 }
 
-.time-block span { 
-    font-size: clamp(2rem, 10vw, 4.5rem); 
-    font-weight: 900; 
-    color: var(--gold) !important; /* FORCED YELLOW */
+/* 3. NAVIGATION (INSIDE OR ABOVE) */
+header {
+    position: absolute; top: 0; width: 100%; padding: 30px 8%;
+}
+nav { display: flex; justify-content: space-between; align-items: center; }
+nav ul { display: flex; list-style: none; gap: 30px; }
+nav a { color: white; text-decoration: none; font-size: 0.8rem; font-weight: bold; opacity: 0.6; transition: 0.3s; }
+nav a:hover { opacity: 1; color: var(--gold); }
+
+/* 4. CONTENT STYLES */
+.tagline { color: var(--gold); letter-spacing: 5px; font-weight: 800; font-size: 0.7rem; }
+h1 { font-size: 4rem; font-weight: 900; margin: 15px 0; letter-spacing: -2px; }
+p { opacity: 0.7; margin-bottom: 40px; }
+
+/* 5. THE HORIZONTAL TIMER (FIXED) */
+.timer-display {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 40px;
+}
+
+.vs-text { color: var(--gold); font-weight: 900; }
+
+.countdown-row {
+    display: flex !important;
+    flex-direction: row !important; /* FORCES HORIZONTAL LINE */
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+.number {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: var(--gold);
     display: block;
     line-height: 1;
 }
 
-.time-block p { font-size: 0.7rem; text-transform: uppercase; opacity: 0.8; margin-top: 5px; }
+.label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    opacity: 0.5;
+}
 
-/* TROPHY & TABLE */
-.container { padding: 80px 5%; }
-.section-title { font-size: 2.2rem; margin-bottom: 30px; border-left: 6px solid var(--gold); padding-left: 15px; }
-.trophy-display-row { display: flex; justify-content: center; gap: 40px; margin: 40px 0; }
-.trophy-box img { width: 90px; filter: drop-shadow(0 0 10px var(--gold)); margin-bottom: 10px; }
-.trophyless { color: #ff4d4d; font-style: italic; font-weight: 700; }
-.table-wrapper { background: var(--navy); border-radius: 20px; overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; }
-th { background: rgba(0,0,0,0.3); padding: 15px; text-align: left; color: var(--gold); }
-td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-
-footer { padding: 60px; text-align: center; opacity: 0.4; font-size: 0.8rem; }
+/* MOBILE FIX */
+@media (max-width: 700px) {
+    .countdown-row { gap: 20px; }
+    .number { font-size: 2.5rem; }
+    h1 { font-size: 2.5rem; }
+}
