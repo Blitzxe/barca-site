@@ -7,135 +7,51 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        .archive-hero { 
-            padding: 150px 8% 50px; 
-            text-align: center; 
-            border-bottom: 1px solid rgba(255,255,255,0.1); 
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('cruyff-bg.jpg'); 
-            background-size: cover; 
-            background-position: top center; 
-        }
+        .archive-hero { padding: 150px 8% 50px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('cruyff-bg.jpg'); background-size: cover; background-position: top center; }
         .archive-hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; color: #fff; letter-spacing: 2px; }
         .archive-hero p { color: var(--gold); font-weight: 800; letter-spacing: 4px; margin-top: 10px; text-transform: uppercase; }
-
         .player-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 25px; margin-top: 30px; }
-        .player-card { background: rgba(255,255,255,0.03); border-radius: 15px; overflow: hidden; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; cursor: pointer; position: relative; }
-        .player-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 15px 30px rgba(237, 187, 0, 0.2); }
+        .player-card { background: rgba(255,255,255,0.03); border-radius: 15px; overflow: hidden; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; cursor: pointer; }
+        .player-card:hover { transform: translateY(-8px); border-color: var(--gold); }
         .player-card img { width: 100%; height: 250px; object-fit: cover; filter: grayscale(50%); transition: 0.3s; }
-        .player-card:hover img { filter: grayscale(0%); }
-        .player-card h4 { padding: 15px 10px; font-size: 1rem; color: #fff; font-weight: 900; }
-
-        /* MODAL STYLES */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
         .modal.show { display: flex; opacity: 1; }
         .modal-content { background: linear-gradient(135deg, var(--navy), var(--blue)); border: 2px solid var(--gold); border-radius: 20px; padding: 40px; max-width: 500px; width: 90%; text-align: center; position: relative; }
         .close-btn { position: absolute; top: 15px; right: 20px; color: #fff; font-size: 2rem; cursor: pointer; }
-        #modal-img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid var(--gold); margin-bottom: 20px; object-fit: cover; }
     </style>
 </head>
 <body>
-
     <header>
         <nav class="nav-container">
             <div class="logo">BARÇA<span class="gold">SITE</span></div>
             <ul class="nav-links"><li><a href="ucl.html">🔙 Back to History</a></li></ul>
         </nav>
     </header>
-
     <section class="archive-hero">
         <h1>THE DREAM TEAM</h1>
         <p>1992 WEMBLEY LEGENDS</p>
     </section>
-
     <main class="container">
         <h2 class="section-title">Click a player for facts</h2>
         <div class="player-grid">
-            
-            <div class="player-card" data-name="Andoni Zubizarreta" data-birth="Vitoria-Gasteiz, Spain" data-fact="The legendary captain and goalkeeper. He played over 400 matches for Barça and provided vital leadership during the 1992 final." data-img="zubi.jpg">
-                <img src="zubi.jpg" alt="Zubizarreta" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
-                <h4>1. Zubizarreta (C)</h4>
-            </div>
-
-            <div class="player-card" data-name="Nando" data-birth="Seville, Spain" data-fact="A physically dominant defender who anchored Cruyff's backline. He played every single minute of the grueling 120-minute final at Wembley." data-img="nando.jpg">
-                <img src="nando.jpg" alt="Nando" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
-                <h4>2. Nando</h4>
-            </div>
-
-            <div class="player-card" data-name="Albert Ferrer" data-birth="Barcelona, Spain" data-fact="A local La Masia hero known as 'Chapi'. His blistering speed and defensive tenacity made him a nightmare for the Sampdoria wingers." data-img="ferrer.jpg">
-                <img src="ferrer.jpg" alt="Ferrer" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
-                <h4>3. Albert Ferrer</h4>
-            </div>
-
-            <div class="player-card" data-name="Ronald Koeman" data-birth="Zaandam, Netherlands" data-fact="The Hero of Wembley. His powerful 112th-minute free-kick delivered Barça's first European Cup and cemented his place in club folklore." data-img="koeman.jpg">
+            <div class="player-card" data-name="Ronald Koeman" data-birth="Zaandam, Netherlands" data-fact="The Hero of Wembley. His powerful 112th-minute free-kick delivered Barça's first European Cup." data-img="koeman.jpg">
                 <img src="koeman.jpg" alt="Koeman" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
                 <h4>4. Ronald Koeman</h4>
             </div>
-
-            <div class="player-card" data-name="Juan Carlos Rodríguez" data-birth="Puente Castro, Spain" data-fact="A vital defender whose discipline allowed Barça's creative stars to push forward. He was instrumental in maintaining the clean sheet." data-img="juan-carlos.jpg">
-                <img src="juan-carlos.jpg" alt="Juan Carlos" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
-                <h4>5. Juan Carlos</h4>
             </div>
-
-            <div class="player-card" data-name="José Mari Bakero" data-birth="Goizueta, Spain" data-fact="The heartbeat of the Dream Team. His miracle last-minute goal against Kaiserslautern earlier in the tournament made the Wembley dream possible." data-img="bakero.jpg">
-                <img src="bakero.jpg" alt="Bakero" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
-                <h4>6. José Mari Bakero</h4>
-            </div>
-
-            <div class="player-card" data-name="Julio Salinas" data-birth="Bilbao, Spain" data-fact="A relentless striker whose tireless pressing kept the Italian defense under constant pressure throughout the historic final." data-img="salinas.jpg">
-                <img src="salinas.jpg" alt="Salinas" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
-                <h4>7. Julio Salinas</h4>
-            </div>
-
-            <div class="player-card" data-name="Hristo Stoichkov" data-birth="Plovdiv, Bulgaria" data-fact="The 'Gunslinger'. A Ballon d'Or winner with a lethal left foot and a fiery passion that came to define the Dream Team era." data-img="stoichkov.jpg">
-                <img src="stoichkov.jpg" alt="Stoichkov" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
-                <h4>8. Hristo Stoichkov</h4>
-            </div>
-
-            <div class="player-card" data-name="Michael Laudrup" data-birth="Frederiksberg, Denmark" data-fact="One of the most elegant playmakers in history. His legendary 'no-look' passes were the engine behind Barça's attacking brilliance." data-img="laudrup.jpg">
-                <img src="laudrup.jpg" alt="Laudrup" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
-                <h4>9. Michael Laudrup</h4>
-            </div>
-
-            <div class="player-card" data-name="Pep Guardiola" data-birth="Santpedor, Spain" data-fact="A 21-year-old midfield maestro in the final. Cruyff's protégé became the brain of the team and later its most successful manager." data-img="guardiola.jpg">
-                <img src="guardiola.jpg" alt="Guardiola" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
-                <h4>10. Pep Guardiola</h4>
-            </div>
-
-            <div class="player-card" data-name="Eusebio Sacristán" data-birth="La Seca, Spain" data-fact="A technical master with endless energy. His ability to control possession under pressure was the perfect fit for Cruyff's philosophy." data-img="eusebio.jpg">
-                <img src="eusebio.jpg" alt="Eusebio" onerror="this.src='https://via.placeholder.com/250/111/edbb00?text=Barça'">
-                <h4>11. Eusebio Sacristán</h4>
-            </div>
-
-        </div>
     </main>
-
-    <div id="playerModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <img id="modal-img" src="">
-            <h2 id="modal-name"></h2>
-            <p id="modal-birth" style="color:var(--gold); font-weight:bold; margin-bottom:15px; font-size:0.9rem; text-transform:uppercase;"></p>
-            <p id="modal-fact" style="color:#ccc; line-height:1.6;"></p>
-        </div>
-    </div>
-
-    <footer><p>Visca el Barça! | barca-site &copy; 2026</p></footer>
-
+    <div id="playerModal" class="modal"><div class="modal-content"><span class="close-btn">&times;</span><img id="modal-img" src=""><h2 id="modal-name"></h2><p id="modal-birth" style="color:var(--gold); font-weight:bold; margin-bottom:15px; font-size:0.9rem; text-transform:uppercase;"></p><p id="modal-fact" style="color:#ccc; line-height:1.6;"></p></div></div>
     <script>
         const modal = document.getElementById('playerModal');
         const closeBtn = document.querySelector('.close-btn');
         const cards = document.querySelectorAll('.player-card');
-
-        cards.forEach(card => {
-            card.addEventListener('click', () => {
-                document.getElementById('modal-name').innerText = card.dataset.name;
-                document.getElementById('modal-birth').innerText = "Born: " + card.dataset.birth;
-                document.getElementById('modal-fact').innerText = card.dataset.fact;
-                document.getElementById('modal-img').src = card.dataset.img;
-                modal.classList.add('show');
-            });
-        });
-
+        cards.forEach(card => { card.addEventListener('click', () => {
+            document.getElementById('modal-name').innerText = card.dataset.name;
+            document.getElementById('modal-birth').innerText = "Born: " + card.dataset.birth;
+            document.getElementById('modal-fact').innerText = card.dataset.fact;
+            document.getElementById('modal-img').src = card.dataset.img;
+            modal.classList.add('show');
+        });});
         closeBtn.onclick = () => modal.classList.remove('show');
         window.onclick = (e) => { if(e.target == modal) modal.classList.remove('show'); }
     </script>
