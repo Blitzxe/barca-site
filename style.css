@@ -1,8 +1,8 @@
 :root {
     --bg: #000c1a;
     --navy: #001e3c;
-    --blue: #004d98; /* Blaugrana Blue */
-    --red: #a50044;  /* Blaugrana Red */
+    --blue: #004d98;
+    --red: #a50044;
     --gold: #edbb00;
 }
 
@@ -10,7 +10,7 @@
 html { scroll-behavior: smooth; }
 body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
 
-/* NAV BAR & HAMBURGER BASE */
+/* --- NAVIGATION & HEADER --- */
 header { 
     background: rgba(0, 12, 26, 0.95); 
     backdrop-filter: blur(10px); 
@@ -26,11 +26,11 @@ header {
 .nav-links { display: flex; list-style: none; gap: 30px; }
 .nav-links a { color: white; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
-/* Hide hamburger on desktop */
+/* MOBILE HAMBURGER ICON */
 .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; z-index: 1002; }
 .bar { width: 25px; height: 3px; background-color: white; transition: 0.3s; border-radius: 3px; }
 
-/* HERO SECTION & ZOOM ANIMATION */
+/* --- HERO SECTION & ANIMATION --- */
 .hero {
     position: relative;
     height: 100vh;
@@ -41,260 +41,100 @@ header {
     overflow: hidden; 
     z-index: 1; 
 }
-
 .hero::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('new-hero-bg.jpg');
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('new-hero-bg.jpg');
     background-size: cover; 
     background-position: center; 
     z-index: -1; 
     animation: bgZoomOut 3s ease-out forwards;
 }
-
 @keyframes bgZoomOut {
     0% { transform: scale(1.15); }
     100% { transform: scale(1); }
 }
-
-/* THE YELLOW LINE FIX */
-.hero-overlay { 
-    width: 100%; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    flex-direction: column; 
-}
-
+.hero-overlay { width: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; }
 .est-tag { color: var(--gold); font-weight: 900; letter-spacing: 6px; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 10px; }
-
-/* BLAUGRANA GRADIENT TEXT */
 .hero h1 { 
     font-size: clamp(3rem, 10vw, 7rem); 
     font-weight: 900; 
-    margin: 5px 0; 
-    letter-spacing: -2px;
     background: linear-gradient(to right, var(--blue), var(--red));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 .slogan-bottom { font-size: 1.2rem; font-weight: 700; letter-spacing: 8px; color: #fff; border-top: 2px solid var(--gold); display: inline-block; padding-top: 15px; text-transform: uppercase; margin-top: 15px; }
 
-/* MATCH TIMER */
+/* --- BUTTONS --- */
+.gold-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--bg); 
+    padding: 15px 35px;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 50px;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    border: 2px solid var(--gold);
+}
+.gold-btn:hover {
+    transform: translateY(-5px);
+    background: transparent;
+    color: var(--gold);
+}
+
+/* --- MATCH TIMER --- */
 .timer-section { padding: 0 8%; margin-top: -100px; position: relative; z-index: 10; }
 .timer-card { 
     background: linear-gradient(135deg, var(--navy), var(--blue)); 
-    padding: 40px; 
-    border-radius: 30px; 
-    text-align: center; 
-    box-shadow: 0 30px 60px rgba(0,0,0,0.6); 
-    border: 1px solid rgba(255,255,255,0.1); 
-    max-width: 900px; 
-    margin: 0 auto; 
+    padding: 40px; border-radius: 30px; text-align: center; 
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); 
+    max-width: 900px; margin: 0 auto; 
 }
-.match-status { font-size: 0.8rem; font-weight: 900; color: var(--gold); letter-spacing: 3px; margin-bottom: 10px; }
-.match-title { font-size: 2.2rem; font-weight: 900; margin-bottom: 5px; }
-.gold-text { color: var(--gold); }
+.countdown-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 15px; margin-top: 30px; }
+.time-box span { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; color: var(--gold) !important; display: block; }
 
-.countdown-grid { 
-    display: grid !important; 
-    grid-template-columns: repeat(4, 1fr) !important; 
-    gap: 15px; 
-    margin-top: 30px; 
-    max-width: 700px; 
-    margin-left: auto; 
-    margin-right: auto; 
-}
-.time-box span { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; color: var(--gold) !important; display: block; line-height: 1; }
-.time-box p { font-size: 0.8rem; text-transform: uppercase; opacity: 0.8; margin-top: 8px; font-weight: 700; }
-
-/* TROPHY CARDS & INTERACTIVITY */
+/* --- TROPHY CARDS --- */
 .container { padding: 120px 8%; }
 .section-title { font-size: 2.2rem; margin-bottom: 50px; border-left: 8px solid var(--gold); padding-left: 20px; font-weight: 900; }
 .trophy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
 .trophy-card { background: rgba(255,255,255,0.02); padding: 40px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+.interactive-card:hover { transform: translateY(-15px); border-color: var(--gold); }
+.trophy-card img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 25px; }
 
-.interactive-card { cursor: pointer; position: relative; }
-.interactive-card:hover { 
-    transform: translateY(-15px) scale(1.02); 
-    box-shadow: 0 20px 40px rgba(237, 187, 0, 0.15); 
-    border-color: var(--gold); 
-}
-.click-hint { 
-    font-size: 0.75rem; 
-    color: var(--gold); 
-    opacity: 0; 
-    transition: 0.3s; 
-    margin-top: 15px; 
-    font-weight: 800; 
-    text-transform: uppercase; 
-    letter-spacing: 2px;
-}
-.interactive-card:hover .click-hint { opacity: 1; }
-
-.trophy-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: contain; 
-    margin-bottom: 25px;
-    filter: drop-shadow(0 15px 15px rgba(0,0,0,0.5));
-    background: rgba(0,0,0,0.2); 
-    border-radius: 15px;
-    padding: 10px;
-}
-.trophy-card h4 { color: var(--gold); font-weight: 900; font-size: 1.2rem; }
-
-/* TABLE */
+/* --- TABLES --- */
 .table-wrapper { background: rgba(255,255,255,0.02); border-radius: 20px; overflow-x: auto; margin-top: 40px; }
 .pro-table { width: 100%; border-collapse: collapse; }
 .pro-table th { background: rgba(255,255,255,0.05); padding: 20px; text-align: left; color: var(--gold); }
 .pro-table td { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-.trophyless { color: #ff5e5e; font-style: italic; opacity: 0.9; font-weight: bold; }
 
-/* =========================================
-   HOMEPAGE ARCHIVE PORTAL
-========================================= */
-.archive-portal {
-    background: linear-gradient(to right, rgba(0, 12, 26, 0.95), rgba(0, 12, 26, 0.3)), 
-                url('zamora.jpg');
-    background-size: cover;
-    background-position: center 20%;
-    border: 1px solid rgba(255,255,255,0.05);
-    border-left: 5px solid var(--gold);
-    border-radius: 20px;
-    padding: 50px;
-    margin-top: 30px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    transition: 0.3s;
-}
+/* --- SQUAD CARDS (1992 Page) --- */
+.player-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 25px; margin-top: 30px; }
+.player-card { background: rgba(255,255,255,0.03); border-radius: 15px; overflow: hidden; text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; cursor: pointer; }
+.player-card:hover { transform: translateY(-8px); border-color: var(--gold); }
+.player-card img { width: 100%; height: 250px; object-fit: cover; filter: grayscale(50%); transition: 0.3s; }
+.player-card:hover img { filter: grayscale(0%); }
 
-.portal-content { 
-    max-width: 500px; 
-    text-align: left; 
-}
-.portal-content h3 { 
-    font-size: 2rem; 
-    font-weight: 900; 
-    margin-bottom: 10px; 
-    text-transform: uppercase; 
-    color: #fff;
-}
-.portal-content p { 
-    color: #ccc; 
-    line-height: 1.6; 
-}
-
-/* SQUAD & PLAYER CARDS (For 1922 Archive) */
-.squad-section { padding: 50px 8%; }
-.squad-category { margin-bottom: 50px; }
-.squad-category h3 { 
-    color: var(--gold); 
-    border-bottom: 1px solid rgba(255,255,255,0.1); 
-    padding-bottom: 10px; 
-    margin-bottom: 25px; 
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-.player-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
-    gap: 20px; 
-}
-.player-card { 
-    background: rgba(255,255,255,0.03); 
-    border-radius: 12px; 
-    overflow: hidden; 
-    text-align: center; 
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: 0.3s;
-}
-.player-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--gold);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}
-.player-card img { 
-    width: 100%; 
-    height: 200px; 
-    object-fit: cover; 
-    background: #111; 
-    filter: sepia(30%) grayscale(80%) contrast(120%); 
-}
-.player-card h4 { 
-    padding: 15px 10px; 
-    font-size: 0.9rem; 
-    color: #fff; 
-    font-weight: 700;
-}
+/* --- MODAL POP-UPS --- */
+.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); justify-content: center; align-items: center; transition: 0.3s; }
+.modal.show { display: flex; opacity: 1; }
+.modal-content { background: linear-gradient(135deg, var(--navy), var(--blue)); border: 2px solid var(--gold); border-radius: 20px; padding: 40px; max-width: 500px; width: 90%; text-align: center; position: relative; }
+.close-btn { position: absolute; top: 15px; right: 20px; color: #fff; font-size: 2rem; cursor: pointer; }
 
 footer { padding: 80px; text-align: center; opacity: 0.4; border-top: 1px solid rgba(255,255,255,0.1); }
 
-/* =========================================
-   📱 MOBILE OPTIMIZATION (Media Queries)
-========================================= */
+/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
-    /* Background image shifted so players are centered */
-    .hero::before {
-        background-position: 30% center; 
-    }
-
-    /* Slide-down Hamburger Menu */
-    .menu-toggle { display: flex; } 
-    
+    .menu-toggle { display: flex; }
     .nav-links { 
-        position: absolute; 
-        top: 100%; 
-        left: 0;
-        width: 100%; 
-        background: rgba(0, 12, 26, 0.98); 
-        flex-direction: column; 
-        text-align: center; 
-        padding: 0;
-        max-height: 0; 
-        overflow: hidden; 
-        transition: max-height 0.4s ease-in-out; 
-        border-bottom: 2px solid transparent;
+        position: absolute; top: 100%; left: 0; width: 100%; background: rgba(0, 12, 26, 0.98); 
+        flex-direction: column; text-align: center; padding: 0; max-height: 0; overflow: hidden; transition: 0.4s; 
     }
-    
-    .nav-links.active { 
-        max-height: 250px; 
-        padding: 20px 0;
-        border-bottom: 2px solid var(--gold);
-    }
-    .nav-links li { margin: 15px 0; }
-    
-    /* Turn Hamburger into 'X' when open */
-    .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
-    .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-    /* Scale down text and grids for small screens */
-    .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); letter-spacing: -1px; }
-    .slogan-bottom { font-size: 0.9rem; letter-spacing: 4px; }
-
-    .timer-section { margin-top: -60px; padding: 0 5%; }
-    .timer-card { padding: 30px 15px; border-radius: 20px; }
-    .match-title { font-size: 1.6rem; }
-    .countdown-grid { gap: 5px; margin-top: 20px; }
-    .time-box span { font-size: clamp(1.8rem, 6vw, 2.5rem) !important; }
-    .time-box p { font-size: 0.6rem; margin-top: 5px; }
-
-    .container { padding: 60px 5%; }
-    .section-title { font-size: 1.8rem; margin-bottom: 30px; }
-    .trophy-grid { gap: 20px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-    .trophy-card { padding: 25px; }
-    .trophy-card img { height: 180px; }
-
-    .pro-table th, .pro-table td { padding: 12px 10px; font-size: 0.8rem; }
-    
-    /* Shrink the padding on the new Archive Portal for phones */
-    .archive-portal { padding: 30px; background-position: right 20%; }
-    .portal-content h3 { font-size: 1.5rem; }
+    .nav-links.active { max-height: 250px; padding: 20px 0; border-bottom: 2px solid var(--gold); }
+    .hero::before { background-position: 30% center; }
+    .timer-section { margin-top: -60px; }
 }
