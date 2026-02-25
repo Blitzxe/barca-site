@@ -12,13 +12,9 @@
     <header>
         <nav class="nav-container">
             <div class="logo">BARÇA<span class="gold">SITE</span></div>
-            
             <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </div>
-
             <ul class="nav-links" id="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#timer">Match Center</a></li>
@@ -41,7 +37,6 @@
             <div class="match-status">UPCOMING FIXTURE</div>
             <h2 class="match-title">BARÇA <span class="gold-text">VS</span> VILLARREAL</h2>
             <p class="match-meta">Saturday, 28 Feb 2026 • 20:45 IST</p>
-            
             <div class="countdown-grid">
                 <div class="time-box"><span id="days">00</span><p>Days</p></div>
                 <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
@@ -69,42 +64,18 @@
                         <p class="click-hint">Tap to view History ➔</p>
                     </div>
                 </a>
-                <div class="trophy-card">
-                    <img src="liga.png" alt="La Liga">
-                    <h4>28 La Liga</h4>
-                </div>
-                <div class="trophy-card">
-                    <img src="copa.png" alt="Copa del Rey">
-                    <h4>32 Copa del Rey</h4>
-                </div>
-            </div>
-
-            <h2 class="section-title" style="margin-top: 50px;">Historical Records</h2>
-            <div class="table-wrapper">
-                <table class="pro-table">
-                    <thead>
-                        <tr><th>Season</th><th>Silverware Won</th><th>Top Scorer</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>2024-25</td><td>🏆 La Liga, 🏆 Copa del Rey</td><td>Lewandowski</td></tr>
-                        <tr><td>2023-24</td><td class="trophyless">Gone trophyless this season</td><td>Lewandowski</td></tr>
-                        <tr><td>2022-23</td><td>🏆 La Liga, 🏆 Spanish Super Cup</td><td>Lewandowski</td></tr>
-                        <tr><td>2021-22</td><td class="trophyless">Gone trophyless this season</td><td>Memphis Depay</td></tr>
-                        <tr><td>2020-21</td><td>🏆 Copa del Rey</td><td>Lionel Messi</td></tr>
-                    </tbody>
-                </table>
+                <div class="trophy-card"><img src="liga.png" alt="La Liga"><h4>28 La Liga</h4></div>
+                <div class="trophy-card"><img src="copa.png" alt="Copa del Rey"><h4>32 Copa del Rey</h4></div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>Visca el Barça! | barca-site &copy; 2026</p>
-    </footer>
+    <footer><p>Visca el Barça! | barca-site &copy; 2026</p></footer>
 
     <script>
         // 1. MATCH TIMER LOGIC
         function updateTimer() {
-            const matchDate = new Date('Feb 28, 2026 20:45:00').getTime();
+            const matchDate = new Date('2026-02-28T20:45:00').getTime();
             const now = new Date().getTime();
             const gap = matchDate - now;
 
@@ -120,21 +91,17 @@
         setInterval(updateTimer, 1000);
         updateTimer();
 
-        // 2. AUTOMATIC NEWS FETCH (Improved CORS Bypass)
+        // 2. NEWS HUB FETCH (With CORS Proxy)
         async function fetchBarcaNews() {
             const apiKey = 'a144ee981ae649ba9f906b0a86b14635';
-            // Using 'raw' AllOrigins proxy for better stability
             const proxyUrl = 'https://api.allorigins.win/raw?url=';
             const targetUrl = `https://newsapi.org/v2/everything?q=FC+Barcelona&sortBy=publishedAt&language=en&pageSize=3&apiKey=${apiKey}`;
 
             try {
                 const response = await fetch(proxyUrl + encodeURIComponent(targetUrl));
-                if (!response.ok) throw new Error('Network response was not ok');
-                
                 const data = await response.json();
                 const container = document.getElementById('news-container');
-                
-                if (data.status === "ok" && data.articles.length > 0) {
+                if (data.status === "ok") {
                     container.innerHTML = ''; 
                     data.articles.forEach(article => {
                         container.innerHTML += `
@@ -142,22 +109,23 @@
                                 <img src="${article.urlToImage || 'https://via.placeholder.com/400x200/111/edbb00?text=Barça+News'}" class="news-image">
                                 <div class="news-content">
                                     <h3>${article.title}</h3>
-                                    <p>${article.description ? article.description.substring(0, 100) + '...' : 'Latest updates from the Camp Nou.'}</p>
+                                    <p>${article.description ? article.description.substring(0, 100) + '...' : 'Latest updates.'}</p>
                                     <a href="${article.url}" target="_blank" class="gold-btn" style="font-size: 0.8rem; padding: 10px 20px; text-decoration: none;">Read More</a>
                                 </div>
                             </div>`;
                     });
-                } else {
-                    throw new Error('API returned error or no articles');
                 }
-            } catch (e) {
-                console.error("News Fetch Error:", e);
-                document.getElementById('news-container').innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #ccc;">The news hub is currently updating. Please check back later.</p>';
-            }
+            } catch (e) { document.getElementById('news-container').innerHTML = '<p>Updating news...</p>'; }
         }
         fetchBarcaNews();
-        setInterval(fetchBarcaNews, 1800000); // Refresh every 30 mins
 
-        // 3. MOBILE MENU LOGIC
+        // 3. MOBILE MENU
         const menuToggle = document.querySelector('#mobile-menu');
-        const navLinks = document.querySelector('#nav-links
+        const navLinks = document.querySelector('#nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active'); 
+            menuToggle.classList.toggle('is-active');
+        });
+    </script>
+</body>
+</html>
