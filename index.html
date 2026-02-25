@@ -12,40 +12,32 @@
     <header>
         <nav class="nav-container">
             <div class="logo">BARÇA<span class="gold">SITE</span></div>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-            </div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="ucl.html">UCL History</a></li>
-                <li><a href="1992.html">1992 Archive</a></li>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="#match-center">MATCH CENTER</a></li>
+                <li><a href="ucl.html">HISTORY</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>MÉS QUE UN CLUB</h1>
-            <p>Experience the history and future of FC Barcelona.</p>
+    <section class="hero-archive">
+        <div class="hero-overlay">
+            <h1>THE DREAM TEAM</h1>
+            <p>1992 WEMBLEY LEGENDS</p>
         </div>
     </section>
 
-    <section class="match-center container">
-        <h2 class="section-title">Next Fixture</h2>
-        <div class="match-card">
-            <div class="team">
-                <img src="https://images.besoccer.com/flags/fc_barcelona.png" alt="Barça">
-                <h3>FC Barcelona</h3>
-            </div>
-            <div class="match-details">
-                <p class="vs">VS</p>
-                <p class="date">SAT 28 FEB 2026</p>
-                <p class="time">16:15 CET</p>
-                <div class="competition">La Liga EA Sports</div>
-            </div>
-            <div class="team">
-                <img src="https://images.besoccer.com/flags/villarreal_cf.png" alt="Villarreal">
-                <h3>Villarreal CF</h3>
+    <section id="match-center" class="match-center container">
+        <div class="countdown-box">
+            <p class="upcoming-tag">UPCOMING FIXTURE</p>
+            <h2 class="match-title">BARÇA VS VILLARREAL</h2>
+            <p class="match-date">Saturday, 28 Feb 2026 • 20:45 IST</p>
+            
+            <div class="timer-grid">
+                <div class="timer-unit"><span>03</span><p>Days</p></div>
+                <div class="timer-unit"><span>00</span><p>Hours</p></div>
+                <div class="timer-unit"><span>53</span><p>Mins</p></div>
+                <div class="timer-unit"><span>07</span><p>Secs</p></div>
             </div>
         </div>
     </section>
@@ -57,56 +49,33 @@
         </div>
     </section>
 
-    <footer>
-        <p>Visca el Barça! | barca-site &copy; 2026</p>
-    </footer>
+    <footer><p>Visca el Barça! | barca-site &copy; 2026</p></footer>
 
     <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.querySelector('#mobile-menu');
-        const navLinks = document.querySelector('#nav-links');
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active'); 
-            menuToggle.classList.toggle('is-active');
-        });
-
-        // Automatic News Fetch
+        // Automatic News Fetch Logic
         async function fetchBarcaNews() {
             const apiKey = 'a144ee981ae649ba9f906b0a86b14635';
-            // Searching for Barcelona and Villarreal specific news for current context
-            const url = `https://newsapi.org/v2/everything?q=FC+Barcelona+OR+Villarreal&sortBy=publishedAt&language=en&pageSize=3&apiKey=${apiKey}`;
-
+            const url = `https://newsapi.org/v2/everything?q=FC+Barcelona&sortBy=publishedAt&language=en&pageSize=3&apiKey=${apiKey}`;
             try {
                 const response = await fetch(url);
                 const data = await response.json();
                 const container = document.getElementById('news-container');
-                
-                if (data.status === "error") throw new Error(data.message);
-
                 container.innerHTML = ''; 
-
                 data.articles.forEach(article => {
-                    const card = `
+                    container.innerHTML += `
                         <div class="news-card">
                             <img src="${article.urlToImage || 'https://via.placeholder.com/400x200/111/edbb00?text=Barça+News'}" class="news-image">
                             <div class="news-content">
                                 <h3>${article.title}</h3>
                                 <p>${article.description ? article.description.substring(0, 100) + '...' : 'Latest updates from the Camp Nou.'}</p>
-                                <a href="${article.url}" target="_blank" class="gold-btn" style="font-size: 0.8rem; padding: 5px 15px; text-decoration: none; display: inline-block;">Read Full Story</a>
+                                <a href="${article.url}" target="_blank" class="gold-btn" style="font-size: 0.8rem; padding: 5px 15px; text-decoration: none;">Read More</a>
                             </div>
-                        </div>
-                    `;
-                    container.innerHTML += card;
+                        </div>`;
                 });
-            } catch (error) {
-                console.error('Error fetching news:', error);
-                document.getElementById('news-container').innerHTML = 
-                    '<p style="color: #ccc; text-align: center; grid-column: 1/-1;">Check back soon for live updates.</p>';
-            }
+            } catch (e) { document.getElementById('news-container').innerHTML = '<p>News update pending...</p>'; }
         }
-
         fetchBarcaNews();
-        setInterval(fetchBarcaNews, 1800000); // 30 min refresh
+        setInterval(fetchBarcaNews, 1800000);
     </script>
 </body>
 </html>
