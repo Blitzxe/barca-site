@@ -120,44 +120,44 @@
         setInterval(updateTimer, 1000);
         updateTimer();
 
-        // 2. AUTOMATIC NEWS FETCH (With CORS Proxy Fix)
+        // 2. AUTOMATIC NEWS FETCH (Improved CORS Bypass)
         async function fetchBarcaNews() {
             const apiKey = 'a144ee981ae649ba9f906b0a86b14635';
-            const proxyUrl = 'https://api.allorigins.win/get?url=';
+            // Using 'raw' AllOrigins proxy for better stability
+            const proxyUrl = 'https://api.allorigins.win/raw?url=';
             const targetUrl = `https://newsapi.org/v2/everything?q=FC+Barcelona&sortBy=publishedAt&language=en&pageSize=3&apiKey=${apiKey}`;
 
             try {
                 const response = await fetch(proxyUrl + encodeURIComponent(targetUrl));
-                const json = await response.json();
-                const data = JSON.parse(json.contents);
+                if (!response.ok) throw new Error('Network response was not ok');
+                
+                const data = await response.json();
                 const container = document.getElementById('news-container');
-                container.innerHTML = ''; 
-
-                data.articles.forEach(article => {
-                    container.innerHTML += `
-                        <div class="news-card">
-                            <img src="${article.urlToImage || 'https://via.placeholder.com/400x200/111/edbb00?text=Barça+News'}" class="news-image">
-                            <div class="news-content">
-                                <h3>${article.title}</h3>
-                                <p>${article.description ? article.description.substring(0, 100) + '...' : 'Latest updates.'}</p>
-                                <a href="${article.url}" target="_blank" class="gold-btn" style="font-size: 0.8rem; padding: 10px 20px; text-decoration: none;">Read More</a>
-                            </div>
-                        </div>`;
-                });
+                
+                if (data.status === "ok" && data.articles.length > 0) {
+                    container.innerHTML = ''; 
+                    data.articles.forEach(article => {
+                        container.innerHTML += `
+                            <div class="news-card">
+                                <img src="${article.urlToImage || 'https://via.placeholder.com/400x200/111/edbb00?text=Barça+News'}" class="news-image">
+                                <div class="news-content">
+                                    <h3>${article.title}</h3>
+                                    <p>${article.description ? article.description.substring(0, 100) + '...' : 'Latest updates from the Camp Nou.'}</p>
+                                    <a href="${article.url}" target="_blank" class="gold-btn" style="font-size: 0.8rem; padding: 10px 20px; text-decoration: none;">Read More</a>
+                                </div>
+                            </div>`;
+                    });
+                } else {
+                    throw new Error('API returned error or no articles');
+                }
             } catch (e) {
-                document.getElementById('news-container').innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #ccc;">Checking for live updates...</p>';
+                console.error("News Fetch Error:", e);
+                document.getElementById('news-container').innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #ccc;">The news hub is currently updating. Please check back later.</p>';
             }
         }
         fetchBarcaNews();
-        setInterval(fetchBarcaNews, 1800000);
+        setInterval(fetchBarcaNews, 1800000); // Refresh every 30 mins
 
-        // 3. MOBILE MENU
+        // 3. MOBILE MENU LOGIC
         const menuToggle = document.querySelector('#mobile-menu');
-        const navLinks = document.querySelector('#nav-links');
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active'); 
-            menuToggle.classList.toggle('is-active');
-        });
-    </script>
-</body>
-</html>
+        const navLinks = document.querySelector('#nav-links
