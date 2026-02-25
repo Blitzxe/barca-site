@@ -35,10 +35,10 @@
             <p class="match-subtitle">Saturday, 28 Feb 2026 • 20:45 IST</p>
             
             <div class="countdown-timer">
-                <div class="time-unit"><span>03</span><p>Days</p></div>
-                <div class="time-unit"><span>00</span><p>Hours</p></div>
-                <div class="time-unit"><span>27</span><p>Mins</p></div>
-                <div class="time-unit"><span>03</span><p>Secs</p></div>
+                <div class="time-unit"><span id="days">00</span><p>Days</p></div>
+                <div class="time-unit"><span id="hours">00</span><p>Hours</p></div>
+                <div class="time-unit"><span id="mins">00</span><p>Mins</p></div>
+                <div class="time-unit"><span id="secs">00</span><p>Secs</p></div>
             </div>
         </div>
     </section>
@@ -53,6 +53,23 @@
     <footer><p>Visca el Barça! | barca-site © 2026</p></footer>
 
     <script>
+        // LIVE COUNTDOWN LOGIC
+        function updateTimer() {
+            const matchDate = new Date("Feb 28, 2026 20:45:00").getTime();
+            const now = new Date().getTime();
+            const diff = matchDate - now;
+
+            if (diff > 0) {
+                document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            }
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // AUTOMATED NEWS HUB
         async function fetchBarcaNews() {
             const apiKey = 'a144ee981ae649ba9f906b0a86b14635';
             const url = `https://newsapi.org/v2/everything?q=FC+Barcelona&sortBy=publishedAt&language=en&pageSize=3&apiKey=${apiKey}`;
@@ -67,17 +84,14 @@
                             <img src="${article.urlToImage || 'https://via.placeholder.com/400x200/111/edbb00?text=Barça+News'}" class="news-image">
                             <div class="news-content">
                                 <h3>${article.title}</h3>
-                                <p>${article.description ? article.description.substring(0, 100) + '...' : 'Latest updates from the Camp Nou.'}</p>
+                                <p>${article.description ? article.description.substring(0, 100) + '...' : 'Latest updates.'}</p>
                                 <a href="${article.url}" target="_blank" class="gold-btn">Read More</a>
                             </div>
                         </div>`;
                 });
-            } catch (e) { 
-                document.getElementById('news-container').innerHTML = '<p>News updates are live. (Check local server for display)</p>'; 
-            }
+            } catch (e) { console.log("News loading..."); }
         }
         fetchBarcaNews();
-        setInterval(fetchBarcaNews, 1800000);
     </script>
 </body>
 </html>
