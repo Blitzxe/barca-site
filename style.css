@@ -4,7 +4,7 @@
     --gold: #edbb00;
 }
 
-body { font-family: 'Montserrat', sans-serif; background: var(--navy); color: white; margin: 0; }
+body { font-family: 'Montserrat', sans-serif; background: var(--navy); color: white; margin: 0; overflow-x: hidden; }
 
 header { background: rgba(0,0,0,0.9); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
@@ -12,16 +12,33 @@ header { background: rgba(0,0,0,0.9); padding: 15px 0; position: fixed; width: 1
 .nav-links { display: flex; list-style: none; gap: 30px; }
 .nav-links a { color: white; text-decoration: none; font-weight: 700; font-size: 0.8rem; letter-spacing: 1px; }
 
-/* HERO SECTION (Matches Screenshot 2026-02-25 201752.jpg) */
+/* HERO SECTION WITH ZOOM-OUT ANIMATION */
 .hero {
-    height: 85vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('new-hero-bg.jpg');
-    background-size: cover; background-position: center;
+    height: 90vh;
+    position: relative;
+    overflow: hidden;
     display: flex; align-items: center; justify-content: center; text-align: center;
 }
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('new-hero-bg.jpg');
+    background-size: cover; background-position: center;
+    z-index: -1;
+    /* ZOOM OUT ANIMATION */
+    animation: zoomOut 20s infinite alternate;
+}
+
+@keyframes zoomOut {
+    0% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
 .est-tag { color: var(--gold); font-weight: 900; letter-spacing: 5px; font-size: 0.9rem; margin-bottom: 10px; }
 .hero h1 { 
-    font-size: clamp(3rem, 10vw, 7rem); 
+    font-size: clamp(3rem, 10vw, 7.5rem); 
     font-weight: 900; 
     background: linear-gradient(to right, #004d98, #a50044); 
     -webkit-background-clip: text; 
@@ -30,36 +47,30 @@ header { background: rgba(0,0,0,0.9); padding: 15px 0; position: fixed; width: 1
 }
 .visca-tag { letter-spacing: 10px; font-weight: 800; border-top: 2px solid var(--gold); padding-top: 10px; display: inline-block; margin-top: 20px; }
 
-/* MATCH BOX (Matches Screenshot 2026-02-25 201800.jpg) */
-.match-center { margin-top: -100px; position: relative; z-index: 5; }
+/* MATCH BOX */
+.match-center { margin-top: -120px; position: relative; z-index: 5; }
 .match-box {
     background: linear-gradient(to right, #002d5c, #004d98);
-    border-radius: 40px; padding: 50px; text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    border-radius: 40px; padding: 60px; text-align: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
 }
-.upcoming-text { font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 10px; opacity: 0.8; }
-.match-title { font-size: 2.2rem; font-weight: 900; margin: 5px 0; }
-.match-subtitle { color: #ccc; margin-bottom: 35px; font-size: 0.9rem; }
+.upcoming-text { font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 15px; opacity: 0.8; }
+.match-title { font-size: 2.5rem; font-weight: 900; margin: 5px 0; }
+.match-subtitle { color: #ccc; margin-bottom: 40px; font-size: 1rem; }
 
-/* TIMER */
-.countdown-timer { display: flex; justify-content: center; gap: 60px; }
-.time-unit span { font-size: 5rem; font-weight: 900; color: var(--gold); display: block; line-height: 1; }
-.time-unit p { font-size: 0.8rem; text-transform: uppercase; margin-top: 10px; opacity: 0.6; }
+/* TIMER GRID */
+.countdown-timer { display: flex; justify-content: center; gap: 50px; }
+.time-unit span { font-size: 5.5rem; font-weight: 900; color: var(--gold); display: block; line-height: 1; }
+.time-unit p { font-size: 0.9rem; text-transform: uppercase; margin-top: 10px; opacity: 0.6; letter-spacing: 1px; }
 
 /* NEWS SECTION */
 .news-hub { padding: 100px 0; }
 .section-title { font-size: 2.5rem; font-weight: 900; border-left: 6px solid var(--gold); padding-left: 20px; margin-bottom: 40px; }
 .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-.news-card { background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; }
+.news-card { background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; transition: 0.3s; }
+.news-card:hover { transform: translateY(-10px); border-color: var(--gold); }
 .news-image { width: 100%; height: 220px; object-fit: cover; }
 .news-content { padding: 25px; }
 .gold-btn { background: var(--gold); color: black; font-weight: 900; padding: 12px 25px; border-radius: 5px; text-decoration: none; display: inline-block; }
 
-.live-dot {
-    height: 12px; width: 12px; background-color: #ff0000; border-radius: 50%;
-    display: inline-block; margin-left: 15px; box-shadow: 0 0 10px #ff0000;
-    animation: pulse 1.5s infinite;
-}
-@keyframes pulse { 0% { transform: scale(0.95); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.5; } 100% { transform: scale(0.95); opacity: 1; } }
-
-footer { text-align: center; padding: 50px 0; opacity: 0.5; font-size: 0.8rem; }
+footer { text-align: center; padding: 60px 0; opacity: 0.5; font-size: 0.8rem; }
