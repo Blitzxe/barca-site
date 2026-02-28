@@ -34,9 +34,9 @@
 
     <section class="timer-section" id="timer">
         <div class="timer-card">
-            <div class="match-status" id="status-label">FETCHING DATA...</div>
-            <h2 class="match-title">BARÇA <span class="gold-text">VS</span> <span id="opponent-name">...</span></h2>
-            <p class="match-meta" id="match-date-display">Updating fixture information...</p>
+            <div class="match-status" id="status-label">FETCHING LIVE DATA...</div>
+            <h2 class="match-title">BARÇA <span class="gold-text">VS</span> <span id="opponent-name">OPPONENT</span></h2>
+            <p class="match-meta" id="match-date-display">Checking fixtures...</p>
             
             <div class="countdown-grid" id="timer-display">
                 <div class="time-box"><span id="days">00</span><p>Days</p></div>
@@ -87,17 +87,15 @@
                 });
                 const data = await response.json();
                 
-                // Find live match first, then the next scheduled one
+                // Identify Live or Next Fixture
                 const liveMatch = data.matches.find(m => m.status === 'IN_PLAY' || m.status === 'LIVE' || m.status === 'PAUSED');
                 const nextMatch = data.matches.find(m => m.status === 'SCHEDULED' || m.status === 'TIMED');
-
                 const currentMatch = liveMatch || nextMatch;
 
                 if (currentMatch) {
                     const opponent = currentMatch.homeTeam.id === 81 ? currentMatch.awayTeam.name : currentMatch.homeTeam.name;
                     const matchTime = new Date(currentMatch.utcDate).getTime();
 
-                    // Update UI Elements
                     document.getElementById('opponent-name').innerText = opponent.toUpperCase();
                     document.getElementById('match-date-display').innerText = new Date(currentMatch.utcDate).toLocaleString();
 
@@ -112,24 +110,16 @@
                     }
                 }
             } catch (e) {
-                console.error("Match Center Error:", e);
-                document.getElementById('status-label').innerText = "DATA TEMPORARILY UNAVAILABLE";
+                document.getElementById('status-label').innerText = "OFFLINE MODE";
             }
         }
 
         function startCountdown(endTime) {
             if (countdownInterval) clearInterval(countdownInterval);
-            
             countdownInterval = setInterval(() => {
                 const now = new Date().getTime();
                 const gap = endTime - now;
-
-                if (gap <= 0) {
-                    clearInterval(countdownInterval);
-                    updateMatchCenter(); // Refresh to check if it's now live
-                    return;
-                }
-
+                if (gap <= 0) { clearInterval(countdownInterval); updateMatchCenter(); return; }
                 const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
                 document.getElementById('days').innerText = Math.floor(gap / day).toString().padStart(2, '0');
                 document.getElementById('hours').innerText = Math.floor((gap % day) / hour).toString().padStart(2, '0');
@@ -138,7 +128,6 @@
             }, 1000);
         }
 
-        // News Fetch with Proxy
         async function fetchBarcaNews() {
             const apiKey = 'a144ee981ae649ba9f906b0a86b14635';
             const proxyUrl = 'https://api.allorigins.win/raw?url=';
@@ -155,7 +144,7 @@
                                 <img src="${article.urlToImage || 'https://via.placeholder.com/400x200/111/edbb00?text=Barca+News'}" class="news-image">
                                 <div class="news-content">
                                     <h3>${article.title}</h3>
-                                    <p>${article.description ? article.description.substring(0, 100) + '...' : 'Latest updates from the Camp Nou.'}</p>
+                                    <p>${article.description ? article.description.substring(0, 100) + '...' : 'Latest updates.'}</p>
                                     <a href="${article.url}" target="_blank" class="gold-btn" style="font-size: 0.8rem; padding: 10px 20px; text-decoration: none;">Read More</a>
                                 </div>
                             </div>`;
@@ -164,14 +153,8 @@
             } catch (e) { document.getElementById('news-container').innerHTML = '<p>Latest news arriving soon.</p>'; }
         }
 
-        // Initial Initialization
         updateMatchCenter();
         fetchBarcaNews();
-        
-        // Refresh fixture every 15 minutes to catch status changes
-        setInterval(updateMatchCenter, 900000);
-
-        // Mobile Menu
         document.querySelector('#mobile-menu').addEventListener('click', () => {
             document.querySelector('#nav-links').classList.toggle('active');
         });
