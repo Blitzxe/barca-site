@@ -9,15 +9,14 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
 
-/* HEADER & NAV */
 header { background: rgba(0, 12, 26, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; }
-.logo { font-weight: 900; font-size: 1.6rem; text-transform: uppercase; color: #fff; }
+.logo { font-weight: 900; font-size: 1.6rem; text-transform: uppercase; }
 .gold { color: var(--gold); }
 .nav-links { display: flex; list-style: none; gap: 30px; }
 .nav-links a { color: white; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
-/* HERO SECTION WITH ZOOM-OUT */
+/* HERO SECTION & ZOOM-OUT ANIMATION */
 .hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; }
 .hero::before {
     content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
@@ -40,12 +39,13 @@ header { background: rgba(0, 12, 26, 0.95); position: fixed; width: 100%; top: 0
 .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 30px; }
 .time-box span { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; color: var(--gold); display: block; }
 
-/* NEWS GRID */
+/* NEWS HUB */
 .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
 .news-card { background: rgba(255, 255, 255, 0.03); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: 0.3s; }
 .news-card:hover { transform: translateY(-10px); border-color: var(--gold); }
 .news-image { width: 100%; height: 200px; object-fit: cover; }
 .news-content { padding: 25px; }
+.gold-btn { display: inline-block; background: var(--gold); color: var(--bg); padding: 12px 25px; font-weight: 900; border-radius: 50px; text-decoration: none; }
 
 /* TROPHY CABINET */
 .container { padding: 120px 8% 50px; }
@@ -54,7 +54,6 @@ header { background: rgba(0, 12, 26, 0.95); position: fixed; width: 100%; top: 0
 .trophy-card { background: rgba(255,255,255,0.02); padding: 40px; border-radius: 25px; text-align: center; }
 .trophy-card img { width: 100%; height: 250px; object-fit: contain; margin-bottom: 25px; }
 
-.gold-btn { display: inline-block; background: var(--gold); color: var(--bg); padding: 12px 25px; font-weight: 900; border-radius: 50px; text-decoration: none; }
 footer { padding: 60px; text-align: center; opacity: 0.4; }
 
 @media (max-width: 768px) {
