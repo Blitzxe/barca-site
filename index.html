@@ -34,10 +34,11 @@
 
     <section class="timer-section" id="timer">
         <div class="timer-card">
-            <div class="match-status">UPCOMING FIXTURE</div>
+            <div class="match-status" id="match-status-text">UPCOMING FIXTURE</div>
             <h2 class="match-title">BARÇA <span class="gold-text">VS</span> VILLARREAL</h2>
             <p class="match-meta">Saturday, 28 Feb 2026 • 20:45 IST</p>
-            <div class="countdown-grid">
+            
+            <div class="countdown-grid" id="timer-display">
                 <div class="time-box"><span id="days">00</span><p>Days</p></div>
                 <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
                 <div class="time-box"><span id="mins">00</span><p>Mins</p></div>
@@ -73,20 +74,26 @@
     <footer><p>Visca el Barça! | barca-site &copy; 2026</p></footer>
 
     <script>
-        // 1. MATCH TIMER LOGIC
+        // 1. FIXED MATCH TIMER LOGIC
         function updateTimer() {
+            // Using ISO format for better cross-browser compatibility
             const matchDate = new Date('2026-02-28T20:45:00').getTime();
             const now = new Date().getTime();
             const gap = matchDate - now;
 
             const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
 
-            if (gap > 0) {
-                document.getElementById('days').innerText = Math.floor(gap / day).toString().padStart(2, '0');
-                document.getElementById('hours').innerText = Math.floor((gap % day) / hour).toString().padStart(2, '0');
-                document.getElementById('mins').innerText = Math.floor((gap % hour) / minute).toString().padStart(2, '0');
-                document.getElementById('secs').innerText = Math.floor((gap % minute) / second).toString().padStart(2, '0');
+            if (gap <= 0) {
+                document.getElementById('match-status-text').innerText = "MATCH LIVE";
+                document.getElementById('match-status-text').style.color = "#ff0000";
+                document.getElementById('timer-display').innerHTML = "<h3 style='grid-column: span 4; font-size: 2rem; color: #edbb00;'>THE GAME HAS STARTED!</h3>";
+                return;
             }
+
+            document.getElementById('days').innerText = Math.floor(gap / day).toString().padStart(2, '0');
+            document.getElementById('hours').innerText = Math.floor((gap % day) / hour).toString().padStart(2, '0');
+            document.getElementById('mins').innerText = Math.floor((gap % hour) / minute).toString().padStart(2, '0');
+            document.getElementById('secs').innerText = Math.floor((gap % minute) / second).toString().padStart(2, '0');
         }
         setInterval(updateTimer, 1000);
         updateTimer();
@@ -115,7 +122,7 @@
                             </div>`;
                     });
                 }
-            } catch (e) { document.getElementById('news-container').innerHTML = '<p>Updating news...</p>'; }
+            } catch (e) { document.getElementById('news-container').innerHTML = '<p>Updates arriving shortly...</p>'; }
         }
         fetchBarcaNews();
 
