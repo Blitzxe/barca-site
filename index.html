@@ -12,16 +12,13 @@
     <header>
         <nav class="nav-container">
             <div class="logo">BARÇA<span class="gold">SITE</span></div>
-            
             <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </div>
-
             <ul class="nav-links" id="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#timer">Match Center</a></li>
+                <li><a href="#news">News</a></li>
                 <li><a href="#trophies">Trophies</a></li>
             </ul>
         </nav>
@@ -37,11 +34,11 @@
 
     <section class="timer-section" id="timer">
         <div class="timer-card">
-            <div class="match-status" id="status-label">NEXT MATCH</div>
+            <div class="match-status" id="status-label">FETCHING DATA...</div>
             <h2 class="match-title">BARÇA <span class="gold-text">VS</span> <span id="opponent-name">...</span></h2>
-            <p class="match-meta" id="match-date-display">Loading next fixture...</p>
+            <p class="match-meta" id="match-date-display">Updating fixture information...</p>
             
-            <div class="countdown-grid">
+            <div class="countdown-grid" id="timer-display">
                 <div class="time-box"><span id="days">00</span><p>Days</p></div>
                 <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
                 <div class="time-box"><span id="mins">00</span><p>Mins</p></div>
@@ -71,22 +68,6 @@
                 <div class="trophy-card"><img src="liga.png" alt="La Liga"><h4>28 La Liga</h4></div>
                 <div class="trophy-card"><img src="copa.png" alt="Copa del Rey"><h4>32 Copa del Rey</h4></div>
             </div>
-
-            <h2 class="section-title" style="margin-top: 50px;">Historical Records</h2>
-            <div class="table-wrapper">
-                <table class="pro-table">
-                    <thead>
-                        <tr><th>Season</th><th>Silverware Won</th><th>Top Scorer</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>2024-25</td><td>🏆 La Liga, 🏆 Copa del Rey</td><td>Lewandowski</td></tr>
-                        <tr><td>2023-24</td><td class="trophyless">Gone trophyless this season</td><td>Lewandowski</td></tr>
-                        <tr><td>2022-23</td><td>🏆 La Liga, 🏆 Spanish Super Cup</td><td>Lewandowski</td></tr>
-                        <tr><td>2021-22</td><td class="trophyless">Gone trophyless this season</td><td>Memphis Depay</td></tr>
-                        <tr><td>2020-21</td><td>🏆 Copa del Rey</td><td>Lionel Messi</td></tr>
-                    </tbody>
-                </table>
-            </div>
         </section>
     </main>
 
@@ -95,12 +76,10 @@
     <script>
         let countdownInterval;
 
-        // 1. AUTO FIXTURE LOGIC
-        async function fetchNextFixture() {
+        async function updateMatchCenter() {
             const apiKey = '38355029a465447bab7a203cb102e058';
             const proxyUrl = 'https://api.allorigins.win/raw?url=';
-            // Barça Team ID is 81. Status scheduled finds the next game.
-            const targetUrl = 'https://api.football-data.org/v4/teams/81/matches?status=SCHEDULED&limit=1';
+            const targetUrl = 'https://api.football-data.org/v4/teams/81/matches';
 
             try {
                 const response = await fetch(proxyUrl + encodeURIComponent(targetUrl), {
@@ -108,45 +87,58 @@
                 });
                 const data = await response.json();
                 
-                if (data.matches && data.matches.length > 0) {
-                    const match = data.matches[0];
-                    const opponent = match.homeTeam.id === 81 ? match.awayTeam.name : match.homeTeam.name;
-                    const matchTime = new Date(match.utcDate).getTime();
+                // Find live match first, then the next scheduled one
+                const liveMatch = data.matches.find(m => m.status === 'IN_PLAY' || m.status === 'LIVE' || m.status === 'PAUSED');
+                const nextMatch = data.matches.find(m => m.status === 'SCHEDULED' || m.status === 'TIMED');
 
-                    // Update UI
+                const currentMatch = liveMatch || nextMatch;
+
+                if (currentMatch) {
+                    const opponent = currentMatch.homeTeam.id === 81 ? currentMatch.awayTeam.name : currentMatch.homeTeam.name;
+                    const matchTime = new Date(currentMatch.utcDate).getTime();
+
+                    // Update UI Elements
                     document.getElementById('opponent-name').innerText = opponent.toUpperCase();
-                    document.getElementById('match-date-display').innerText = new Date(match.utcDate).toLocaleString('en-GB', { 
-                        weekday: 'long', day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' 
-                    }) + ' UTC';
+                    document.getElementById('match-date-display').innerText = new Date(currentMatch.utcDate).toLocaleString();
 
-                    // Start Countdown
-                    if (countdownInterval) clearInterval(countdownInterval);
-                    countdownInterval = setInterval(() => updateTimer(matchTime), 1000);
-                    updateTimer(matchTime);
+                    if (liveMatch) {
+                        document.getElementById('status-label').innerText = "MATCH LIVE";
+                        document.getElementById('status-label').classList.add('live-active');
+                        document.getElementById('timer-display').innerHTML = `<h3 class="live-msg">THE GAME IS IN PROGRESS</h3>`;
+                    } else {
+                        document.getElementById('status-label').innerText = "NEXT MATCH";
+                        document.getElementById('status-label').classList.remove('live-active');
+                        startCountdown(matchTime);
+                    }
                 }
             } catch (e) {
-                console.error("Fixture error:", e);
-                document.getElementById('match-date-display').innerText = "Fixture update pending...";
+                console.error("Match Center Error:", e);
+                document.getElementById('status-label').innerText = "DATA TEMPORARILY UNAVAILABLE";
             }
         }
 
-        function updateTimer(matchTime) {
-            const now = new Date().getTime();
-            const gap = matchTime - now;
-            const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
+        function startCountdown(endTime) {
+            if (countdownInterval) clearInterval(countdownInterval);
+            
+            countdownInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const gap = endTime - now;
 
-            if (gap <= 0) {
-                document.getElementById('status-label').innerText = "MATCH LIVE";
-                return;
-            }
+                if (gap <= 0) {
+                    clearInterval(countdownInterval);
+                    updateMatchCenter(); // Refresh to check if it's now live
+                    return;
+                }
 
-            document.getElementById('days').innerText = Math.floor(gap / day).toString().padStart(2, '0');
-            document.getElementById('hours').innerText = Math.floor((gap % day) / hour).toString().padStart(2, '0');
-            document.getElementById('mins').innerText = Math.floor((gap % hour) / minute).toString().padStart(2, '0');
-            document.getElementById('secs').innerText = Math.floor((gap % minute) / second).toString().padStart(2, '0');
+                const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
+                document.getElementById('days').innerText = Math.floor(gap / day).toString().padStart(2, '0');
+                document.getElementById('hours').innerText = Math.floor((gap % day) / hour).toString().padStart(2, '0');
+                document.getElementById('mins').innerText = Math.floor((gap % hour) / minute).toString().padStart(2, '0');
+                document.getElementById('secs').innerText = Math.floor((gap % minute) / second).toString().padStart(2, '0');
+            }, 1000);
         }
 
-        // 2. NEWS HUB FETCH
+        // News Fetch with Proxy
         async function fetchBarcaNews() {
             const apiKey = 'a144ee981ae649ba9f906b0a86b14635';
             const proxyUrl = 'https://api.allorigins.win/raw?url=';
@@ -160,28 +152,28 @@
                     data.articles.forEach(article => {
                         container.innerHTML += `
                             <div class="news-card">
-                                <img src="${article.urlToImage || 'https://via.placeholder.com/400x200/111/edbb00?text=Barça+News'}" class="news-image">
+                                <img src="${article.urlToImage || 'https://via.placeholder.com/400x200/111/edbb00?text=Barca+News'}" class="news-image">
                                 <div class="news-content">
                                     <h3>${article.title}</h3>
-                                    <p>${article.description ? article.description.substring(0, 100) + '...' : 'Latest updates.'}</p>
+                                    <p>${article.description ? article.description.substring(0, 100) + '...' : 'Latest updates from the Camp Nou.'}</p>
                                     <a href="${article.url}" target="_blank" class="gold-btn" style="font-size: 0.8rem; padding: 10px 20px; text-decoration: none;">Read More</a>
                                 </div>
                             </div>`;
                     });
                 }
-            } catch (e) { document.getElementById('news-container').innerHTML = '<p>News update pending...</p>'; }
+            } catch (e) { document.getElementById('news-container').innerHTML = '<p>Latest news arriving soon.</p>'; }
         }
 
-        // Initial Calls
-        fetchNextFixture();
+        // Initial Initialization
+        updateMatchCenter();
         fetchBarcaNews();
+        
+        // Refresh fixture every 15 minutes to catch status changes
+        setInterval(updateMatchCenter, 900000);
 
-        // 3. MOBILE MENU
-        const menuToggle = document.querySelector('#mobile-menu');
-        const navLinks = document.querySelector('#nav-links');
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active'); 
-            menuToggle.classList.toggle('is-active');
+        // Mobile Menu
+        document.querySelector('#mobile-menu').addEventListener('click', () => {
+            document.querySelector('#nav-links').classList.toggle('active');
         });
     </script>
 </body>
