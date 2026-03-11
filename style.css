@@ -12,7 +12,6 @@ body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: whit
 header { background: rgba(0, 12, 26, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; }
 .logo { font-weight: 900; font-size: 1.6rem; text-transform: uppercase; color: #fff; }
-.gold { color: var(--gold); }
 .nav-links { display: flex; list-style: none; gap: 30px; }
 .nav-links a { color: white; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
