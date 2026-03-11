@@ -34,9 +34,9 @@
 
     <section class="timer-section" id="timer">
         <div class="timer-card">
-            <div class="match-status" id="status-label">UPCOMING FIXTURE</div>
-            <h2 class="match-title">BARÇA <span class="gold-text">VS</span> <span id="opponent-name">VILLARREAL</span></h2>
-            <p class="match-meta" id="match-date-display">Saturday, 28 Feb 2026 • 20:45 IST</p>
+            <div class="match-status" id="status-label">NEXT MATCH</div>
+            <h2 class="match-title">BARÇA <span class="gold-text">VS</span> <span id="opponent-name">OPPONENT</span></h2>
+            <p class="match-meta" id="match-date-display">Updating Fixture...</p>
             
             <div class="countdown-grid" id="timer-display">
                 <div class="time-box"><span id="days">00</span><p>Days</p></div>
@@ -75,8 +75,9 @@
 
     <script>
         let countdownInterval;
-        // UPDATED: Future fallback date (April 18, 2026) to ensure timer runs
+        // FALLBACK: Future Match (Atletico Madrid - April 18, 2026)
         const FALLBACK_TIME = new Date('2026-04-18T21:00:00').getTime();
+        const FALLBACK_OPPONENT = "ATLETICO MADRID";
 
         async function updateMatchCenter() {
             const apiKey = '38355029a465447bab7a203cb102e058';
@@ -89,7 +90,6 @@
                 });
                 const data = await response.json();
                 
-                // Prioritize Live matches, then Scheduled ones
                 const liveMatch = data.matches.find(m => m.status === 'IN_PLAY' || m.status === 'LIVE');
                 const nextMatch = data.matches.find(m => m.status === 'SCHEDULED' || m.status === 'TIMED');
                 const currentMatch = liveMatch || nextMatch;
@@ -108,18 +108,23 @@
                         startCountdown(matchTime);
                     }
                 } else {
-                    startCountdown(FALLBACK_TIME);
+                    useFallback();
                 }
             } catch (e) {
-                // Keep future fallback details if API fails
-                startCountdown(FALLBACK_TIME);
+                useFallback();
             }
+        }
+
+        function useFallback() {
+            document.getElementById('opponent-name').innerText = FALLBACK_OPPONENT;
+            document.getElementById('match-date-display').innerText = "Saturday, 18 Apr 2026 • 21:00 UTC";
+            startCountdown(FALLBACK_TIME);
         }
 
         function showLiveState() {
             document.getElementById('status-label').innerText = "MATCH LIVE";
             document.getElementById('status-label').style.color = "#ff0000";
-            document.getElementById('timer-display').innerHTML = `<h3 style="grid-column: span 4; font-size: 2rem; color: #edbb00;">THE GAME IS ONGOING!</h3>`;
+            document.getElementById('timer-display').innerHTML = `<h3 style="grid-column: span 4; font-size: 2rem; color: #edbb00; font-weight: 900;">THE GAME IS ONGOING!</h3>`;
         }
 
         function startCountdown(endTime) {
@@ -170,7 +175,6 @@
 
         updateMatchCenter();
         fetchBarcaNews();
-
         document.querySelector('#mobile-menu').addEventListener('click', () => {
             document.querySelector('#nav-links').classList.toggle('active');
         });
