@@ -75,8 +75,8 @@
 
     <script>
         let countdownInterval;
-        // Default match if API fails
-        const FALLBACK_TIME = new Date('2026-02-28T20:45:00').getTime();
+        // UPDATED: Future fallback date (April 18, 2026) to ensure timer runs
+        const FALLBACK_TIME = new Date('2026-04-18T21:00:00').getTime();
 
         async function updateMatchCenter() {
             const apiKey = '38355029a465447bab7a203cb102e058';
@@ -89,6 +89,7 @@
                 });
                 const data = await response.json();
                 
+                // Prioritize Live matches, then Scheduled ones
                 const liveMatch = data.matches.find(m => m.status === 'IN_PLAY' || m.status === 'LIVE');
                 const nextMatch = data.matches.find(m => m.status === 'SCHEDULED' || m.status === 'TIMED');
                 const currentMatch = liveMatch || nextMatch;
@@ -110,7 +111,7 @@
                     startCountdown(FALLBACK_TIME);
                 }
             } catch (e) {
-                // Keep default Villarreal details if API fails
+                // Keep future fallback details if API fails
                 startCountdown(FALLBACK_TIME);
             }
         }
