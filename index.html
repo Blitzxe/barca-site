@@ -35,7 +35,7 @@
     <section class="timer-section" id="timer">
         <div class="timer-card">
             <div class="match-status" id="status-label">NEXT MATCH</div>
-            <h2 class="match-title">BARÇA <span class="gold-text">VS</span> <span id="opponent-name">OPPONENT</span></h2>
+            <h2 class="match-title">BARCELONA <span class="gold-text">VS</span> <span id="opponent-name">OPPONENT</span></h2>
             <p class="match-meta" id="match-date-display">Updating Fixture...</p>
             
             <div class="countdown-grid" id="timer-display">
@@ -75,8 +75,8 @@
 
     <script>
         let countdownInterval;
-        // FALLBACK: Future Match (Atletico Madrid - April 18, 2026)
-        const FALLBACK_TIME = new Date('2026-04-18T21:00:00').getTime();
+        // FALLBACK: Future Match (Atletico Madrid - April 4, 2026)
+        const FALLBACK_TIME = new Date('2026-04-04T21:00:00').getTime();
         const FALLBACK_OPPONENT = "ATLETICO MADRID";
 
         async function updateMatchCenter() {
@@ -117,7 +117,7 @@
 
         function useFallback() {
             document.getElementById('opponent-name').innerText = FALLBACK_OPPONENT;
-            document.getElementById('match-date-display').innerText = "Saturday, 18 Apr 2026 • 21:00 UTC";
+            document.getElementById('match-date-display').innerText = "Saturday, 04 Apr 2026 • 21:00 UTC";
             startCountdown(FALLBACK_TIME);
         }
 
